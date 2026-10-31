@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>灵动嘻哈外传 · 本地版</title>
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="./style.css?v=combat2">
+  <link rel="stylesheet" href="./style.css?v=combat3">
   <script src="./ruffle/ruffle.js" defer></script>
-  <script src="./app.js?v=combat2" type="module"></script>
+  <script src="./app.js?v=combat3" type="module"></script>
 </head>
 <body>
   <main>
@@ -16,20 +16,20 @@
       <div id="game-console">
         <div id="stage" tabindex="0" aria-label="游戏画面，点击后使用键盘操作"><div id="placeholder"><p>熟悉的江湖，重新出发。</p><p class="muted">点击下方「启动游戏」载入原版内容。</p></div></div>
         <div id="touch-controls" class="controls-disabled" aria-label="触屏操作">
-          <div id="joystick-zone" aria-label="移动摇杆"><span class="joystick-label">移动</span></div>
+          <div id="joystick-zone" aria-label="浮动移动摇杆"><span class="joystick-label">触摸此处移动</span></div>
           <div class="action-buttons">
             <button data-key="1" class="skill-button uppercut-button" title="飞空中再点可接下劈，也可下＋攻击接飞空2" disabled>飞空<span>再点下劈</span></button>
             <button data-key="2" class="skill-button sand-button" title="连续点按依次接鬼步1、2、3，保留方向＋攻击连招" disabled>鬼步<span>再点连招</span></button>
             <button data-key="k" class="jump-button" disabled>跳跃<span>K</span></button>
-            <button data-key="3" class="skill-button dragon-button" disabled>龙出<span>100 MP</span></button>
-            <button data-key="4" class="skill-button dance-button" disabled>乱舞<span>130 MP</span></button>
+            <button data-key="3" class="skill-button dragon-button" title="消耗100MP，释放恢复15%最大HP" disabled>龙出<span>100 MP</span></button>
+            <button data-key="4" class="skill-button dance-button" title="消耗130MP，释放恢复15%最大HP" disabled>乱舞<span>130 MP</span></button>
             <button data-key="j" class="attack-button" disabled>攻击<span>J</span></button>
           </div>
         </div>
       </div>
-      <div class="toolbar"><button id="start">启动游戏</button><button data-key="i" class="pause-button" disabled>暂停</button><button id="restart" disabled>重新启动</button><label class="combo-label">判定 <select id="combo-mode"><option value="combat" selected>战斗优化</option><option value="assist">必杀宽松（旧）</option><option value="relaxed">普通连击宽松</option><option value="original">原版</option></select></label><button id="fullscreen" disabled>全屏</button><button id="sound" disabled>静音</button><span id="status" role="status">等待启动</span></div>
+      <div class="toolbar"><button id="options" class="options-button" aria-expanded="false">设置</button><button id="start">启动游戏</button><button data-key="i" class="pause-button" disabled>暂停</button><button id="restart" disabled>重新启动</button><label class="combo-label">判定 <select id="combo-mode"><option value="combat" selected>战斗优化</option><option value="assist">必杀宽松（旧）</option><option value="relaxed">普通连击宽松</option><option value="original">原版</option></select></label><button id="fullscreen" disabled>全屏</button><button id="sound" disabled>静音</button><span id="status" role="status">等待启动</span></div>
     </section>
-    <section class="help"><p><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> 移动 <i></i><kbd>J</kbd> 攻击 <i></i><kbd>K</kbd> 跳跃 <i></i><kbd>I</kbd> 游戏暂停</p><p class="muted">手机建议横屏：左手摇杆移动，右手攻击 / 跳跃，可同时按住。菜单直接点击游戏画面。触控对应原版默认按键，游戏内改键后请恢复默认。</p><p id="input-status" class="muted" aria-live="off">触控：已松开</p></section>
+    <section class="help"><p><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> 移动 <i></i><kbd>J</kbd> 攻击 <i></i><kbd>K</kbd> 跳跃 <i></i><kbd>I</kbd> 游戏暂停</p><p class="muted">手机建议横屏：左侧触摸处即为摇杆中心，拖动移动，右手攻击 / 跳跃，可同时按住。菜单直接点击游戏画面。触控对应原版默认按键，游戏内改键后请恢复默认。</p><p id="input-status" class="muted" aria-live="off">触控：已松开</p></section>
     <details><summary>运行信息</summary><pre id="diagnostics">Ruffle 0.7.1 · 所有游戏资源由本机提供。</pre><ul id="resources"></ul></details>
     <footer>原作：灵动游戏 · 本地保存版 · 浏览器无需 Flash 插件</footer>
   </main>

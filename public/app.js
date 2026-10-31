@@ -1,4 +1,4 @@
-import { setupControls } from './controls.js?v=combat2';
+import { setupControls } from './controls.js?v=combat3';
 
 const stage = document.getElementById('stage');
 const start = document.getElementById('start');
@@ -25,6 +25,7 @@ new PerformanceObserver(showResources).observe({ entryTypes: ['resource'] });
 
 async function boot() {
   const selectedMode = comboMode.value;
+  document.getElementById('touch-controls').classList.toggle('awaiting-player', selectedMode === 'combat');
   const gameBase = selectedMode === 'combat' ? './game/combat/' : selectedMode === 'assist' ? './game/assist/' : selectedMode === 'relaxed' ? './game/relaxed/' : './game/';
   comboMode.disabled = true;
   controls.enable(false);
@@ -50,6 +51,10 @@ async function boot() {
     });
     player.ruffle().volume = muted ? 0 : 1;
     player.ruffle().traceObserver = message => {
+      if (String(message) === 'MHHF_PLAYER|ready') {
+        document.getElementById('touch-controls').classList.remove('awaiting-player');
+        return;
+      }
       if (!String(message).startsWith('MHHF_SKILL|')) return;
       const [, result, name, cost] = String(message).split('|');
       const label = ({ '飞空':'飞空', '飞空2':'飞空下劈', '鬼步1':'鬼步1', '鬼步2':'鬼步2', '鬼步3':'鬼步3', '龙出前':'龙出', '乱舞前':'乱舞' })[name] || '技能';
@@ -106,4 +111,10 @@ sound.addEventListener('click', () => {
 });
 window.addEventListener('keydown', event => {
   if (player && ['Space', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.code)) event.preventDefault();
+});
+
+const options = document.getElementById("options");
+options.addEventListener("click", () => {
+  const open = options.closest(".toolbar").classList.toggle("options-open");
+  options.setAttribute("aria-expanded", String(open));
 });

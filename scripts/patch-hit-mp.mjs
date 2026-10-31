@@ -71,6 +71,25 @@ export async function patchHitMp(inputPath, outputPath, {javaPath,ffdecPath}={})
   const temp = await mkdtemp(path.join(os.tmpdir(),'mhhf-hit-mp-'));
   const imports = path.join(temp,'scripts');
   await mkdir(imports,{recursive:true});
+  // These separate collision clips initiate the player's automatic grab.
+  const grabFiles=[];
+  async function disableGrabs(directory) {
+    for(const item of await readdir(directory,{withFileTypes:true})) {
+      const full=path.join(directory,item.name);
+      if(item.isDirectory())await disableGrabs(full);
+      else if(item.name.endsWith('.as')) {
+        const text=await readFile(full,'utf8');
+        if(!text.includes('man.gotoAndPlay("抓人")'))continue;
+        if(!text.includes('if(hitTest(_parent._parent.man.zhua))'))throw new Error('Unexpected grab condition');
+        const relative=path.relative(sources,full),dest=path.join(imports,relative);
+        await mkdir(path.dirname(dest),{recursive:true});
+        await writeFile(dest,'onClipEvent(enterFrame){ /* Proximity auto-grab disabled. */ }\n');
+        grabFiles.push(relative);
+      }
+    }
+  }
+  await disableGrabs(sources);
+  if(grabFiles.length!==18)throw new Error('Unexpected auto-grab inventory: '+grabFiles.length);
   const entries = await collisionPaths();
   if(entries.length!==21)throw new Error(`Expected 21 enemy collision scripts, found ${entries.length}`);
   const summary = { checkedScripts:21,modifiedScripts:0,restoredBranches:0,blockedBranches:0,replacedExisting:0,tempDirectory:temp,files:[] };
@@ -108,6 +127,12 @@ export async function patchHitMp(inputPath, outputPath, {javaPath,ffdecPath}={})
   const shield=await readFile(path.join(verified,'scripts','DefineSprite_675_e_03boss/frame_79/PlaceObject2_23_11/CLIPACTIONRECORD onClipEvent(enterFrame).as'),'utf8');
   if(shield.includes(mpRestoreStatement))throw new Error('Boss shield unexpectedly restores MP');
   summary.verifiedBranches=verifiedBranches;
+  for(const relative of grabFiles) {
+    // FFDec may omit an entirely empty event from its script export.
+    const text=await readFile(path.join(verified,'scripts',relative),'utf8').catch(error=>{if(error.code==='ENOENT')return '';throw error;});
+    if(/抓人|被抓|Throw|man\.zhua/.test(text))throw new Error('Auto-grab remained: '+relative);
+  }
+  summary.disabledAutoGrabs=grabFiles.length;
   if(verifiedBranches!==220)throw new Error('Incomplete independently verified MP patch');
   return summary;
 }

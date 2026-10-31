@@ -1,4 +1,5 @@
 // Per-character history; no synthetic key playback and no free ultimates.
+trace("MHHF_PLAYER|ready");
 this._combatPreviousTick = this.onEnterFrame;
 this._combatDownCount = 0;
 this._combatQuarterStep = 0;

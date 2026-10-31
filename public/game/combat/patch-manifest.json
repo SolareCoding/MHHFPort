@@ -1,17 +1,21 @@
 {
-  "version": 2,
-  "description": "Ultimate input history, capped hit MP recovery, player-only expanded hitboxes; based on directional assist",
+  "version": 3,
+  "description": "Combat v3: floating controls, no proximity grabs, 15% HP restoration on ultimate cast; based on directional assist",
   "files": [
     {
       "id": 0,
       "path": "a5b.swf",
       "base_sha256": "d224b9a2e84cf00ca2d58112fc35abd6514461b15bd699f4c1af46856fac0044",
-      "patched_sha256": "46ead9836e4f03798defa5bacaa8db0a035402d1dbe4b7cfc9b79b581358c2a9",
+      "patched_sha256": "c8128f39ad670f26fcb6b32909b550e0efe192f1c1dca992f6a218d6be564245",
       "changes": [
         {
           "feature": "hit-mp",
           "modifiedScripts": 20,
           "verifiedBranches": 220
+        },
+        {
+          "feature": "no-auto-grab",
+          "disabledClips": 18
         }
       ]
     },
@@ -19,7 +23,7 @@
       "id": 1,
       "path": "games/data/mhhf_w/1man.swf",
       "base_sha256": "8d8fff135cc9ca59887b4c4abd87cfdc4e8b03bf892e55c37c707b0c0983fea9",
-      "patched_sha256": "d87673bb14de5094c0b2860bf85c3281bf122de7f929e95f21e968de6c340a00",
+      "patched_sha256": "14d59cdbca24d2b51ab847fbc7e9769d825c4deb64544f561270f3f63cc036b0",
       "changes": [
         {
           "feature": "hitbox",
@@ -333,7 +337,16 @@
           "feature": "ultimate-history",
           "directionGapMs": 750,
           "attackGraceMs": 450,
-          "helper_sha256": "a0791a38aaa890dc305b42eca043a9a08ad084670866f367e311bc16463d9695"
+          "helper_sha256": "e856df3a07904319ab60a7d46426f18879ec3b8775f806add1c2fb2b3ad6ea46"
+        },
+        {
+          "feature": "ultimate-heal",
+          "frames": [
+            342,
+            355
+          ],
+          "maxHpFraction": 0.15,
+          "heal_sha256": "9d30af9fd4d3f0b904e7c09c32cc40ae7b6345e715c570666a34e34ae4e670ac"
         }
       ]
     },
@@ -341,7 +354,7 @@
       "id": 2,
       "path": "games/data/mhhf_w/2man.swf",
       "base_sha256": "17ff1879c950143290eb5194519380985f74caa4b62cbb0ff9853b946f89a2b8",
-      "patched_sha256": "a0cb0a9b8828d040274b9c24f7f5b75b971254303fb11b2492871b1fac514f37",
+      "patched_sha256": "e6714c34c339a3760f5234856d1fde0d2c5ddc63b3edc93eac18fcc88d1ec66c",
       "changes": [
         {
           "feature": "hitbox",
@@ -655,7 +668,16 @@
           "feature": "ultimate-history",
           "directionGapMs": 750,
           "attackGraceMs": 450,
-          "helper_sha256": "a0791a38aaa890dc305b42eca043a9a08ad084670866f367e311bc16463d9695"
+          "helper_sha256": "e856df3a07904319ab60a7d46426f18879ec3b8775f806add1c2fb2b3ad6ea46"
+        },
+        {
+          "feature": "ultimate-heal",
+          "frames": [
+            342,
+            355
+          ],
+          "maxHpFraction": 0.15,
+          "heal_sha256": "9d30af9fd4d3f0b904e7c09c32cc40ae7b6345e715c570666a34e34ae4e670ac"
         }
       ]
     },
@@ -663,7 +685,7 @@
       "id": 3,
       "path": "games/data/mhhf_w/3man.swf",
       "base_sha256": "7ee49045d2518a7da4ecddaa8684377c14adea423f038a950e9e12c77f499f8b",
-      "patched_sha256": "e1f3cce0aaf60cb5f8f665e2afebf6efa9d22f91a9d41efc663cbe305cec8a2d",
+      "patched_sha256": "51717688a32598bf40815b0ce200f97fe7b79290c1e6face145aea42bd195cdd",
       "changes": [
         {
           "feature": "hitbox",
@@ -999,7 +1021,16 @@
           "feature": "ultimate-history",
           "directionGapMs": 750,
           "attackGraceMs": 450,
-          "helper_sha256": "a0791a38aaa890dc305b42eca043a9a08ad084670866f367e311bc16463d9695"
+          "helper_sha256": "e856df3a07904319ab60a7d46426f18879ec3b8775f806add1c2fb2b3ad6ea46"
+        },
+        {
+          "feature": "ultimate-heal",
+          "frames": [
+            342,
+            355
+          ],
+          "maxHpFraction": 0.15,
+          "heal_sha256": "9d30af9fd4d3f0b904e7c09c32cc40ae7b6345e715c570666a34e34ae4e670ac"
         }
       ]
     }

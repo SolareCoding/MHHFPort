@@ -65,13 +65,21 @@ test('all three player variants preserve non-hitbox root tags and exact helper b
     const patchedBytes=await readFile(new URL('combat/'+entry.path,root));
     assert.equal(createHash('sha256').update(patchedBytes).digest('hex'),entry.patched_sha256);
     const patched=decodeSwf(patchedBytes),a=readTags(original.body,original.start),b=readTags(patched.body,patched.start);
-    assert.equal(b.length,a.length+1);
+    assert.equal(b.length,a.length+3);
     let firstFrame=a.findIndex(t=>t.code===1);
     assert.equal(b[firstFrame].code,12);
     assert.equal(b[firstFrame].data.includes(Buffer.from('combat CAST')),false,'temporary verification probe removed');
     const helper=entry.changes.find(x=>x.feature==='ultimate-history');
     assert.equal(createHash('sha256').update(b[firstFrame].data).digest('hex'),helper.helper_sha256);
-    b.splice(firstFrame,1);let count=0;
+    b.splice(firstFrame,1);
+    const heal=entry.changes.find(x=>x.feature==='ultimate-heal');
+    let frame=1;const healed=[];
+    for(let i=0;i<b.length;i++){
+      if(b[i].code===12&&createHash('sha256').update(b[i].data).digest('hex')===heal.heal_sha256){healed.push(frame);b.splice(i--,1);continue;}
+      if(b[i].code===1)frame++;
+    }
+    assert.deepEqual(healed,[342,355]);
+    let count=0;
     for(let i=0;i<a.length;i++){
       assert.equal(a[i].code,b[i].code);
       const before=a[i].code===26?namedPlacement(a[i].data):null;
@@ -84,6 +92,13 @@ test('all three player variants preserve non-hitbox root tags and exact helper b
       }else assert.deepEqual(a[i].data,b[i].data);
     }
     assert.equal(count,entry.id===3?15:14);
+  }
+});
+
+test('ultimate cast restores 15% of maximum HP, capped, never revives or heals in pause',async()=>{
+  const heal=await readFile(new URL('../scripts/ultimate-heal.as',import.meta.url),'utf8');
+  for(const [hp,maxhp,pause,expected] of [[40,100,0,55],[95,100,0,100],[10,200,0,40],[0,100,0,0],[40,100,1,40]]){
+    const root={hp,maxhp,pause};vm.runInNewContext(heal,{_root:root});assert.equal(root.hp,expected);
   }
 });
 test('MP import changes only audited enemy sprites and preserves all big-skill prices',async()=>{

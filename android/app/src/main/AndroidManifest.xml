@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Local appassets HTTPS responses need no network/storage permission. -->
+    <application android:theme="@android:style/Theme.Material.NoActionBar"
+        android:label="灵动嘻哈外传" android:icon="@mipmap/ic_launcher"
+        android:allowBackup="false" android:usesCleartextTraffic="false"
+        android:hardwareAccelerated="true" android:enableOnBackInvokedCallback="true">
+        <activity android:name=".MainActivity" android:exported="true"
+            android:screenOrientation="sensorLandscape"
+            android:configChanges="orientation|screenSize|keyboardHidden|smallestScreenSize|screenLayout">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+    </application>
+</manifest>

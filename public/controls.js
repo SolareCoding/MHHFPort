@@ -26,7 +26,7 @@ export function createInput(getPlayer, onChange = () => {}) {
 }
 
 export function directionKeys({ x, y }, force) {
-  if (force < 0.22) return [];
+  if (force < 0.16) return [];
   const angle = Math.atan2(y, x);
   const sector = Math.round(angle / (Math.PI / 4));
   return ({ '-4': ['a'], '-3': ['a', 's'], '-2': ['s'], '-1': ['s', 'd'],
@@ -46,24 +46,33 @@ export function setupControls(getPlayer) {
     for (const button of buttons) button.classList.toggle('pressed', keys.includes(button.dataset.key));
   });
   const focusPlayer = () => getPlayer()?.focus({ preventScroll: true });
-  const joystick = nipplejs.create({
-    zone, mode: 'static', position: { left: '50%', top: '50%' },
-    color: '#d9bc80', size: 110, restOpacity: 0.65, fadeTime: 100
-  });
-  joystick.on('start', () => { if (enabled) focusPlayer(); });
-  joystick.on('move', event => {
-    if (enabled) input.set('joystick', directionKeys(event.data.vector, event.data.force));
-  });
-  joystick.on('end', () => input.set('joystick', []));
+  let joystick, joystickPointer = null;
+  function createJoystick() {
+    joystick = nipplejs.create({
+      zone, mode: 'dynamic', follow: true, multitouch: false,
+      color: '#d9bc80', size: 110, fadeTime: 80
+    });
+    joystick.on('start', () => { zone.classList.add('active'); if (enabled) focusPlayer(); });
+    joystick.on('move', event => {
+      if (enabled) input.set('joystick', directionKeys(event.data.vector, event.data.force));
+    });
+    joystick.on('end', () => { zone.classList.remove('active'); input.set('joystick', []); });
+  }
+  createJoystick();
   // Keep receiving moves when a finger leaves the visible joystick circle.
   zone.addEventListener('pointerdown', event => {
     event.preventDefault();
-    if (!enabled) return;
+    if (!enabled || joystickPointer !== null) return;
     focusPlayer();
+    joystickPointer = event.pointerId;
     zone.setPointerCapture(event.pointerId);
   });
-  for (const type of ['pointercancel', 'lostpointercapture']) {
-    zone.addEventListener(type, () => input.set('joystick', []));
+  for (const type of ['pointerup', 'pointercancel', 'lostpointercapture']) {
+    zone.addEventListener(type, event => {
+      if (event.pointerId !== joystickPointer) return;
+      joystickPointer = null;
+      input.set('joystick', []);
+    });
   }
   for (const button of buttons) {
     button.addEventListener('pointerdown', event => {
@@ -101,6 +110,11 @@ export function setupControls(getPlayer) {
     });
   }
   function clear() {
+    joystick.destroy();
+    zone.classList.remove('active');
+    if(joystickPointer !== null && zone.hasPointerCapture(joystickPointer))zone.releasePointerCapture(joystickPointer);
+    joystickPointer = null;
+    createJoystick();
     for (const timer of releases.values()) clearTimeout(timer);
     releases.clear();
     input.clear();

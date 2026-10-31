@@ -50,6 +50,10 @@ footer { text-align:center; font-size:11px; color:#747b79; margin-top:24px; }
 .action-buttons button span { display:block; font-size:10px; opacity:.5; margin-top:2px; }
 button.pressed { background:#c7a56d; color:#111; box-shadow:0 0 15px #d6b67b77; }
 .controls-disabled #joystick-zone { pointer-events:none; opacity:.35; }
+.options-button { display:none; }
+#touch-controls.awaiting-player { visibility:hidden; }
+.joystick-label { transition:opacity .1s; }
+#joystick-zone.active .joystick-label { opacity:0; }
 .player-card:fullscreen, .player-card.expanded { border:0; border-radius:0; background:#090b0c; display:flex; flex-direction:column; justify-content:center; width:100%; height:100%; padding:max(8px, env(safe-area-inset-top)) max(24px, env(safe-area-inset-right)) max(24px, env(safe-area-inset-bottom)) max(24px, env(safe-area-inset-left)); }
 .player-card.expanded { position:fixed; inset:0; z-index:100; height:100dvh; }
 .player-card:fullscreen #stage, .player-card.expanded #stage { max-height:calc(100dvh - 212px); }
@@ -77,4 +81,54 @@ button.pressed { background:#c7a56d; color:#111; box-shadow:0 0 15px #d6b67b77; 
   .skill-button { width:48px; height:52px; border-radius:13px; }
   .attack-button { width:62px; height:62px; }
   .jump-button { width:56px; height:56px; }
+}
+
+/* Mobile uses overlays, so controls no longer subtract two columns or a toolbar
+   from the original 4:3 picture. Preserve the image ratio rather than stretch it. */
+@media (orientation:landscape) and (max-height:600px), (orientation:landscape) and (pointer:coarse) {
+  html, body { width:100%; height:100%; overflow:hidden; background:#090b0c; }
+  main { width:100%; max-width:none; height:100dvh; padding:0; }
+  header, .help, details, footer { display:none; }
+  .player-card, .player-card:fullscreen, .player-card.expanded {
+    position:relative; width:100%; height:100dvh; padding:0; border:0; border-radius:0;
+    display:block; box-shadow:none;
+  }
+  .player-card.expanded { position:fixed; }
+  #game-console { position:relative; display:grid; grid-template-columns:minmax(0,1fr); grid-template-rows:minmax(0,1fr); place-items:center; width:100%; height:100%; }
+  #stage, .player-card:fullscreen #stage, .player-card.expanded #stage {
+    grid-column:1; grid-row:1; width:min(100%, calc(100dvh * 4 / 3)); height:100%;
+    max-width:none; max-height:none; aspect-ratio:auto; justify-self:center;
+  }
+  #touch-controls { position:absolute; inset:0; display:block; pointer-events:none; background:none; padding:0; }
+  #joystick-zone {
+    position:absolute; left:max(28px, env(safe-area-inset-left)); bottom:max(26px, env(safe-area-inset-bottom));
+    width:clamp(170px, 36vw, 360px); height:clamp(140px, 45dvh, 260px);
+    margin:0; pointer-events:auto; border-radius:24px;
+  }
+  .joystick-label { bottom:18px; color:#e0c9a0; opacity:.5; text-shadow:0 1px 3px #000; }
+  .action-buttons {
+    --skill:clamp(48px, 13dvh, 72px); --attack:clamp(60px, 17dvh, 88px);
+    position:absolute; right:max(28px, env(safe-area-inset-right)); bottom:max(26px, env(safe-area-inset-bottom));
+    grid-template-columns:var(--skill) var(--skill) var(--attack);
+    grid-template-rows:var(--skill) var(--attack); gap:8px; padding:0; margin:0;
+    pointer-events:auto;
+  }
+  .skill-button { width:var(--skill); height:var(--skill); border-radius:15px; }
+  .jump-button { width:var(--skill); height:var(--skill); }
+  .attack-button { width:var(--attack); height:var(--attack); }
+  .action-buttons button { background:#303536ae; border-color:#d8c8ab70; text-shadow:0 1px 3px #000; }
+  .action-buttons .attack-button { background:#55462cb8; }
+  .action-buttons button.pressed { background:#c7a56d; text-shadow:none; }
+  .action-buttons button span { font-size:9px; }
+  .toolbar {
+    position:absolute; z-index:5; bottom:max(6px, env(safe-area-inset-bottom)); left:50%; transform:translateX(-50%);
+    width:max-content; max-width:90%; border:0; border-radius:10px; background:#171b1dc9;
+    padding:4px; gap:4px; justify-content:center;
+  }
+  .toolbar > :not(#start):not(.pause-button):not(#options) { display:none; }
+  .toolbar .options-button { display:block; }
+  .toolbar button { padding:7px 10px; min-height:32px; }
+  .toolbar.options-open { bottom:auto; top:max(8px, env(safe-area-inset-top)); width:max-content; }
+  .toolbar.options-open > :not(#status) { display:flex; }
+  #status { display:none; }
 }
