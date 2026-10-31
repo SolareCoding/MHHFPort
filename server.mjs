@@ -6,6 +6,7 @@ import { fileURLToPath } from 'node:url';
 
 const root = path.dirname(fileURLToPath(import.meta.url));
 const port = Number(process.env.PORT || 8765);
+const host = process.env.HOST || '127.0.0.1';
 const mime = { '.html': 'text/html; charset=utf-8', '.js': 'text/javascript; charset=utf-8', '.css': 'text/css; charset=utf-8', '.wasm': 'application/wasm', '.swf': 'application/x-shockwave-flash', '.json': 'application/json; charset=utf-8', '.map': 'application/json' };
 const logPath = path.join(root, 'requests.log');
 
@@ -35,5 +36,5 @@ const server = http.createServer(async (req, res) => {
     res.writeHead(404, { 'Content-Type': 'text/plain; charset=utf-8' }).end('Not found');
   }
 });
-server.listen(port, '127.0.0.1', () => console.log(`灵动嘻哈外传：http://127.0.0.1:${port}\n按 Ctrl+C 停止服务。`));
+server.listen(port, host, () => console.log(`灵动嘻哈外传：http://${host}:${port}\n${host === '0.0.0.0' ? '局域网访问请使用本机的局域网 IPv4 地址。\n' : ''}按 Ctrl+C 停止服务。`));
 server.on('error', error => { console.error(error.message); process.exitCode = 1; });

@@ -1,3 +1,5 @@
+import { setupControls } from './controls.js';
+
 const stage = document.getElementById('stage');
 const start = document.getElementById('start');
 const restart = document.getElementById('restart');
@@ -7,6 +9,8 @@ const status = document.getElementById('status');
 const diagnostics = document.getElementById('diagnostics');
 let player;
 let muted = false;
+const controls = setupControls(() => player);
+controls.enable(false);
 
 function showResources() {
   const loaded = performance.getEntriesByType('resource').filter(x => /\.swf(?:\?|$)/.test(x.name));
@@ -19,6 +23,7 @@ function showResources() {
 new PerformanceObserver(showResources).observe({ entryTypes: ['resource'] });
 
 async function boot() {
+  controls.enable(false);
   start.disabled = true;
   restart.disabled = true;
   status.textContent = '正在加载游戏…';
@@ -32,13 +37,14 @@ async function boot() {
       diagnostics.textContent = 'Ruffle 0.7.1\n' + JSON.stringify(player.ruffle().metadata, null, 2);
     });
     await player.ruffle().load({
-      url: '/game/a5b.swf', base: new URL('/game/', location.href).href,
+      url: new URL('./game/a5b.swf', location.href).href, base: new URL('./game/', location.href).href,
       autoplay: 'on', unmuteOverlay: 'visible', backgroundColor: '#ffffff',
       scale: 'showAll', forceScale: true, letterbox: 'on',
       allowScriptAccess: false, openUrlMode: 'deny', logLevel: 'warn',
       splashScreen: false, contextMenu: 'on'
     });
     player.ruffle().volume = muted ? 0 : 1;
+    controls.enable(true);
     status.textContent = '已载入 · 点击画面开始操作';
     fullscreen.disabled = sound.disabled = restart.disabled = false;
     start.hidden = true;
@@ -56,7 +62,25 @@ async function boot() {
 }
 start.addEventListener('click', boot);
 restart.addEventListener('click', boot);
-fullscreen.addEventListener('click', () => player?.requestFullscreen());
+fullscreen.addEventListener('click', async () => {
+  controls.clear();
+  const card = document.querySelector('.player-card');
+  try {
+    if (document.fullscreenElement) await document.exitFullscreen();
+    else if (card.requestFullscreen) await card.requestFullscreen();
+    else {
+      card.classList.toggle('expanded');
+      fullscreen.textContent = card.classList.contains('expanded') ? '退出大屏' : '全屏';
+    }
+  } catch {
+    card.classList.toggle('expanded');
+    fullscreen.textContent = card.classList.contains('expanded') ? '退出大屏' : '全屏';
+  }
+  player?.focus({ preventScroll: true });
+});
+document.addEventListener('fullscreenchange', () => {
+  fullscreen.textContent = document.fullscreenElement ? '退出全屏' : '全屏';
+});
 sound.addEventListener('click', () => {
   muted = !muted;
   player.ruffle().volume = muted ? 0 : 1;

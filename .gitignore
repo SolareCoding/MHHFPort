@@ -4,5 +4,6 @@ node_modules/
 .env.*
 !.env.example
 coverage/
+dist/
 test-results/
 !archive/lingdong-hiphop/analysis-integrated/*.log

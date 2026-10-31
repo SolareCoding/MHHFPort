@@ -24,6 +24,14 @@ test('standalone repository serves preserved SWFs and Ruffle over HTTP', async t
       assert.equal(response.status, 200);
       assert.match(await response.text(), /灵动嘻哈外传/);
     });
+    await t.test('touch control modules are served locally as JavaScript', async () => {
+      for (const url of ['/app.js', '/controls.js', '/vendor/nipplejs-1.0.4/index.js']) {
+        const response = await fetch(base + url);
+        assert.equal(response.status, 200, url);
+        assert.match(response.headers.get('content-type'), /javascript/, url);
+        assert.ok((await response.text()).length > 100, url);
+      }
+    });
     const manifest = JSON.parse(await readFile(new URL('../assets-manifest.json', import.meta.url), 'utf8'));
     for (const asset of manifest.files) {
       await t.test(asset.url, async () => {
