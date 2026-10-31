@@ -1,0 +1,1007 @@
+{
+  "version": 2,
+  "description": "Ultimate input history, capped hit MP recovery, player-only expanded hitboxes; based on directional assist",
+  "files": [
+    {
+      "id": 0,
+      "path": "a5b.swf",
+      "base_sha256": "d224b9a2e84cf00ca2d58112fc35abd6514461b15bd699f4c1af46856fac0044",
+      "patched_sha256": "46ead9836e4f03798defa5bacaa8db0a035402d1dbe4b7cfc9b79b581358c2a9",
+      "changes": [
+        {
+          "feature": "hit-mp",
+          "modifiedScripts": 20,
+          "verifiedBranches": 220
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "path": "games/data/mhhf_w/1man.swf",
+      "base_sha256": "8d8fff135cc9ca59887b4c4abd87cfdc4e8b03bf892e55c37c707b0c0983fea9",
+      "patched_sha256": "d87673bb14de5094c0b2860bf85c3281bf122de7f929e95f21e968de6c340a00",
+      "changes": [
+        {
+          "feature": "hitbox",
+          "name": "h1",
+          "before": {
+            "sx": 619728,
+            "sy": 109261,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1608,
+            "ty": -98,
+            "end": 15
+          },
+          "after": {
+            "sx": 774660,
+            "sy": 125650,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1632,
+            "ty": -98,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "h2",
+          "before": {
+            "sx": 619521,
+            "sy": 119012,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1609,
+            "ty": -99,
+            "end": 15
+          },
+          "after": {
+            "sx": 774401,
+            "sy": 136864,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1633,
+            "ty": -99,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "ts",
+          "before": {
+            "sx": 490962,
+            "sy": 88666,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1147,
+            "ty": -89,
+            "end": 15
+          },
+          "after": {
+            "sx": 613703,
+            "sy": 101966,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1166,
+            "ty": -89,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "ts1",
+          "before": {
+            "sx": 619387,
+            "sy": 109318,
+            "rx": 0,
+            "ry": 0,
+            "tx": 2290,
+            "ty": -96,
+            "end": 15
+          },
+          "after": {
+            "sx": 774234,
+            "sy": 125716,
+            "rx": 0,
+            "ry": 0,
+            "tx": 2314,
+            "ty": -96,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_cj",
+          "before": {
+            "sx": 485613,
+            "sy": 126771,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1742,
+            "ty": -61,
+            "end": 15
+          },
+          "after": {
+            "sx": 607016,
+            "sy": 145787,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1761,
+            "ty": -61,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_cj",
+          "before": {
+            "sx": 561986,
+            "sy": 126771,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1920,
+            "ty": -41,
+            "end": 15
+          },
+          "after": {
+            "sx": 702483,
+            "sy": 145787,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1941,
+            "ty": -41,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "h3",
+          "before": {
+            "sx": 619624,
+            "sy": 138807,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1609,
+            "ty": -107,
+            "end": 15
+          },
+          "after": {
+            "sx": 774530,
+            "sy": 159628,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1633,
+            "ty": -107,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_fk",
+          "before": {
+            "sx": 583091,
+            "sy": 125991,
+            "rx": 0,
+            "ry": 0,
+            "tx": 955,
+            "ty": -121,
+            "end": 15
+          },
+          "after": {
+            "sx": 728864,
+            "sy": 144890,
+            "rx": 0,
+            "ry": 0,
+            "tx": 977,
+            "ty": -121,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_fk",
+          "before": {
+            "sx": 648074,
+            "sy": 125991,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1376,
+            "ty": -121,
+            "end": 15
+          },
+          "after": {
+            "sx": 810093,
+            "sy": 144890,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1401,
+            "ty": -121,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_fk3",
+          "before": {
+            "sx": 604866,
+            "sy": 125978,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1349,
+            "ty": -43,
+            "end": 15
+          },
+          "after": {
+            "sx": 756083,
+            "sy": 144875,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1372,
+            "ty": -43,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_gb1",
+          "before": {
+            "sx": 847380,
+            "sy": 125991,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1813,
+            "ty": -81,
+            "end": 15
+          },
+          "after": {
+            "sx": 1059225,
+            "sy": 144890,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1845,
+            "ty": -81,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_gb2",
+          "before": {
+            "sx": 490962,
+            "sy": 134513,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1527,
+            "ty": -85,
+            "end": 15
+          },
+          "after": {
+            "sx": 613703,
+            "sy": 154690,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1546,
+            "ty": -85,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_gb3",
+          "before": {
+            "sx": 671737,
+            "sy": 129797,
+            "rx": 0,
+            "ry": 0,
+            "tx": 846,
+            "ty": -81,
+            "end": 15
+          },
+          "after": {
+            "sx": 839671,
+            "sy": 149267,
+            "rx": 0,
+            "ry": 0,
+            "tx": 872,
+            "ty": -81,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_gb3",
+          "before": {
+            "sx": 620196,
+            "sy": 181377,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1216,
+            "ty": -77,
+            "end": 15
+          },
+          "after": {
+            "sx": 775245,
+            "sy": 208584,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1240,
+            "ty": -77,
+            "end": 15
+          }
+        },
+        {
+          "feature": "ultimate-history",
+          "directionGapMs": 750,
+          "attackGraceMs": 450,
+          "helper_sha256": "a0791a38aaa890dc305b42eca043a9a08ad084670866f367e311bc16463d9695"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "path": "games/data/mhhf_w/2man.swf",
+      "base_sha256": "17ff1879c950143290eb5194519380985f74caa4b62cbb0ff9853b946f89a2b8",
+      "patched_sha256": "a0cb0a9b8828d040274b9c24f7f5b75b971254303fb11b2492871b1fac514f37",
+      "changes": [
+        {
+          "feature": "hitbox",
+          "name": "h1",
+          "before": {
+            "sx": 619728,
+            "sy": 109261,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1608,
+            "ty": -98,
+            "end": 15
+          },
+          "after": {
+            "sx": 774660,
+            "sy": 125650,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1632,
+            "ty": -98,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "h2",
+          "before": {
+            "sx": 1042861,
+            "sy": 119012,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1717,
+            "ty": -99,
+            "end": 15
+          },
+          "after": {
+            "sx": 1303576,
+            "sy": 136864,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1757,
+            "ty": -99,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "ts",
+          "before": {
+            "sx": 490962,
+            "sy": 88666,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1147,
+            "ty": -89,
+            "end": 15
+          },
+          "after": {
+            "sx": 613703,
+            "sy": 101966,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1166,
+            "ty": -89,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "ts1",
+          "before": {
+            "sx": 1188913,
+            "sy": 109318,
+            "rx": 0,
+            "ry": 0,
+            "tx": 2775,
+            "ty": -56,
+            "end": 16
+          },
+          "after": {
+            "sx": 1486141,
+            "sy": 125716,
+            "rx": 0,
+            "ry": 0,
+            "tx": 2820,
+            "ty": -56,
+            "end": 16
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_cj",
+          "before": {
+            "sx": 485613,
+            "sy": 126771,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1742,
+            "ty": -61,
+            "end": 15
+          },
+          "after": {
+            "sx": 607016,
+            "sy": 145787,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1761,
+            "ty": -61,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_cj",
+          "before": {
+            "sx": 561986,
+            "sy": 126771,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1920,
+            "ty": -41,
+            "end": 15
+          },
+          "after": {
+            "sx": 702483,
+            "sy": 145787,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1941,
+            "ty": -41,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "h3",
+          "before": {
+            "sx": 619624,
+            "sy": 138807,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1609,
+            "ty": -107,
+            "end": 15
+          },
+          "after": {
+            "sx": 774530,
+            "sy": 159628,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1633,
+            "ty": -107,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_fk",
+          "before": {
+            "sx": 583091,
+            "sy": 125991,
+            "rx": 0,
+            "ry": 0,
+            "tx": 955,
+            "ty": -121,
+            "end": 15
+          },
+          "after": {
+            "sx": 728864,
+            "sy": 144890,
+            "rx": 0,
+            "ry": 0,
+            "tx": 977,
+            "ty": -121,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_fk",
+          "before": {
+            "sx": 648074,
+            "sy": 125991,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1376,
+            "ty": -121,
+            "end": 15
+          },
+          "after": {
+            "sx": 810093,
+            "sy": 144890,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1401,
+            "ty": -121,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_fk3",
+          "before": {
+            "sx": 604866,
+            "sy": 125978,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1349,
+            "ty": -43,
+            "end": 15
+          },
+          "after": {
+            "sx": 756083,
+            "sy": 144875,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1372,
+            "ty": -43,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_gb1",
+          "before": {
+            "sx": 847380,
+            "sy": 125991,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1813,
+            "ty": -81,
+            "end": 15
+          },
+          "after": {
+            "sx": 1059225,
+            "sy": 144890,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1845,
+            "ty": -81,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_gb2",
+          "before": {
+            "sx": 1476257,
+            "sy": 134513,
+            "rx": 0,
+            "ry": 0,
+            "tx": 2777,
+            "ty": -85,
+            "end": 16
+          },
+          "after": {
+            "sx": 1845321,
+            "sy": 154690,
+            "rx": 0,
+            "ry": 0,
+            "tx": 2833,
+            "ty": -85,
+            "end": 16
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_gb3",
+          "before": {
+            "sx": 1783229,
+            "sy": 129797,
+            "rx": 0,
+            "ry": 0,
+            "tx": 3372,
+            "ty": -141,
+            "end": 16
+          },
+          "after": {
+            "sx": 2229036,
+            "sy": 149267,
+            "rx": 0,
+            "ry": 0,
+            "tx": 3440,
+            "ty": -141,
+            "end": 16
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_gb3",
+          "before": {
+            "sx": 1931624,
+            "sy": 181377,
+            "rx": 0,
+            "ry": 0,
+            "tx": 461,
+            "ty": -77,
+            "end": 15
+          },
+          "after": {
+            "sx": 2414530,
+            "sy": 208584,
+            "rx": 0,
+            "ry": 0,
+            "tx": 535,
+            "ty": -77,
+            "end": 15
+          }
+        },
+        {
+          "feature": "ultimate-history",
+          "directionGapMs": 750,
+          "attackGraceMs": 450,
+          "helper_sha256": "a0791a38aaa890dc305b42eca043a9a08ad084670866f367e311bc16463d9695"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "path": "games/data/mhhf_w/3man.swf",
+      "base_sha256": "7ee49045d2518a7da4ecddaa8684377c14adea423f038a950e9e12c77f499f8b",
+      "patched_sha256": "e1f3cce0aaf60cb5f8f665e2afebf6efa9d22f91a9d41efc663cbe305cec8a2d",
+      "changes": [
+        {
+          "feature": "hitbox",
+          "name": "h1",
+          "before": {
+            "sx": 619728,
+            "sy": 109261,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1608,
+            "ty": -98,
+            "end": 15
+          },
+          "after": {
+            "sx": 774660,
+            "sy": 125650,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1632,
+            "ty": -98,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "h2",
+          "before": {
+            "sx": 1042861,
+            "sy": 119012,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1717,
+            "ty": -99,
+            "end": 15
+          },
+          "after": {
+            "sx": 1303576,
+            "sy": 136864,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1757,
+            "ty": -99,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "ts",
+          "before": {
+            "sx": 490962,
+            "sy": 88666,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1147,
+            "ty": -89,
+            "end": 15
+          },
+          "after": {
+            "sx": 613703,
+            "sy": 101966,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1166,
+            "ty": -89,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "ts1",
+          "before": {
+            "sx": 1188913,
+            "sy": 109318,
+            "rx": 0,
+            "ry": 0,
+            "tx": 2775,
+            "ty": -56,
+            "end": 16
+          },
+          "after": {
+            "sx": 1486141,
+            "sy": 125716,
+            "rx": 0,
+            "ry": 0,
+            "tx": 2820,
+            "ty": -56,
+            "end": 16
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_cj",
+          "before": {
+            "sx": 485613,
+            "sy": 126771,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1742,
+            "ty": -61,
+            "end": 15
+          },
+          "after": {
+            "sx": 607016,
+            "sy": 145787,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1761,
+            "ty": -61,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_cj",
+          "before": {
+            "sx": 561986,
+            "sy": 126771,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1920,
+            "ty": -41,
+            "end": 15
+          },
+          "after": {
+            "sx": 702483,
+            "sy": 145787,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1941,
+            "ty": -41,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "h3",
+          "before": {
+            "sx": 619624,
+            "sy": 138807,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1609,
+            "ty": -107,
+            "end": 15
+          },
+          "after": {
+            "sx": 774530,
+            "sy": 159628,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1633,
+            "ty": -107,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_fk",
+          "before": {
+            "sx": 583091,
+            "sy": 125991,
+            "rx": 0,
+            "ry": 0,
+            "tx": 955,
+            "ty": -121,
+            "end": 15
+          },
+          "after": {
+            "sx": 728864,
+            "sy": 144890,
+            "rx": 0,
+            "ry": 0,
+            "tx": 977,
+            "ty": -121,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_fk",
+          "before": {
+            "sx": 648074,
+            "sy": 125991,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1376,
+            "ty": -121,
+            "end": 15
+          },
+          "after": {
+            "sx": 810093,
+            "sy": 144890,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1401,
+            "ty": -121,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_fk3",
+          "before": {
+            "sx": 604866,
+            "sy": 125978,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1349,
+            "ty": -43,
+            "end": 15
+          },
+          "after": {
+            "sx": 756083,
+            "sy": 144875,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1372,
+            "ty": -43,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_gb1",
+          "before": {
+            "sx": 847380,
+            "sy": 125991,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1813,
+            "ty": -81,
+            "end": 15
+          },
+          "after": {
+            "sx": 1059225,
+            "sy": 144890,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1845,
+            "ty": -81,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_gb2",
+          "before": {
+            "sx": 1092220,
+            "sy": 134513,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1839,
+            "ty": -4,
+            "end": 15
+          },
+          "after": {
+            "sx": 1365275,
+            "sy": 154690,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1881,
+            "ty": -4,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "ts",
+          "before": {
+            "sx": 931257,
+            "sy": 129797,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1655,
+            "ty": -141,
+            "end": 15
+          },
+          "after": {
+            "sx": 1164071,
+            "sy": 149267,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1691,
+            "ty": -141,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_gb3",
+          "before": {
+            "sx": 931257,
+            "sy": 129797,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1655,
+            "ty": -141,
+            "end": 15
+          },
+          "after": {
+            "sx": 1164071,
+            "sy": 149267,
+            "rx": 0,
+            "ry": 0,
+            "tx": 1691,
+            "ty": -141,
+            "end": 15
+          }
+        },
+        {
+          "feature": "hitbox",
+          "name": "b_gb3",
+          "before": {
+            "sx": 1931624,
+            "sy": 181377,
+            "rx": 0,
+            "ry": 0,
+            "tx": 461,
+            "ty": -77,
+            "end": 15
+          },
+          "after": {
+            "sx": 2414530,
+            "sy": 208584,
+            "rx": 0,
+            "ry": 0,
+            "tx": 535,
+            "ty": -77,
+            "end": 15
+          }
+        },
+        {
+          "feature": "ultimate-history",
+          "directionGapMs": 750,
+          "attackGraceMs": 450,
+          "helper_sha256": "a0791a38aaa890dc305b42eca043a9a08ad084670866f367e311bc16463d9695"
+        }
+      ]
+    }
+  ]
+}

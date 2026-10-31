@@ -1,6 +1,6 @@
 import nipplejs from './vendor/nipplejs-1.0.4/index.js';
 
-const keyCodes = { w: 87, a: 65, s: 83, d: 68, j: 74, k: 75, i: 73 };
+const keyCodes = { w: 87, a: 65, s: 83, d: 68, j: 74, k: 75, i: 73, 1:49, 2:50, 3:51, 4:52 };
 
 // Each pointer owns its keys: releasing one finger must not release another's key.
 export function createInput(getPlayer, onChange = () => {}) {
@@ -12,7 +12,7 @@ export function createInput(getPlayer, onChange = () => {}) {
     for (const key of new Set([...held, ...next])) {
       if (held.has(key) === next.has(key)) continue;
       player?.dispatchEvent(new KeyboardEvent(next.has(key) ? 'keydown' : 'keyup', {
-        key, code: `Key${key.toUpperCase()}`, keyCode: keyCodes[key], which: keyCodes[key],
+        key, code: /^[1-4]$/.test(key) ? `Digit${key}` : `Key${key.toUpperCase()}`, keyCode: keyCodes[key], which: keyCodes[key],
         bubbles: true, composed: true, cancelable: true
       }));
     }
@@ -68,7 +68,7 @@ export function setupControls(getPlayer) {
   for (const button of buttons) {
     button.addEventListener('pointerdown', event => {
       event.preventDefault();
-      if (!enabled || (event.pointerType === 'mouse' && event.button !== 0)) return;
+      if (!enabled || button.disabled || (event.pointerType === 'mouse' && event.button !== 0)) return;
       focusPlayer();
       button.setPointerCapture(event.pointerId);
       clearTimeout(releases.get(event.pointerId));
@@ -93,7 +93,7 @@ export function setupControls(getPlayer) {
     button.addEventListener('contextmenu', event => event.preventDefault());
     // Keyboard / assistive activation does not produce pointerdown.
     button.addEventListener('click', event => {
-      if (!enabled || event.detail !== 0) return;
+      if (!enabled || button.disabled || event.detail !== 0) return;
       focusPlayer();
       const source = `activate:${button.dataset.key}`;
       input.set(source, [button.dataset.key]);
@@ -116,10 +116,10 @@ export function setupControls(getPlayer) {
   document.addEventListener('fullscreenchange', clear);
   return {
     clear,
-    enable(value) {
+    enable(value, directSkills = false) {
       clear(); enabled = value;
       panel.classList.toggle('controls-disabled', !value);
-      for (const button of buttons) button.disabled = !value;
+      for (const button of buttons) button.disabled = !value || (button.classList.contains('skill-button') && !directSkills);
     }
   };
 }

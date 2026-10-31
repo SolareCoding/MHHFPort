@@ -66,6 +66,12 @@ test('standalone repository serves preserved SWFs and Ruffle over HTTP', async t
         assert.equal(createHash('sha256').update(bytes).digest('hex'),file.patched_sha256);
       }
     });
+    await t.test('combat assist URLs and direct skill UI are present',async()=>{
+      const html=await(await fetch(base)).text();
+      for(const key of ['1','2','3','4'])assert.ok(html.includes(`data-key="${key}"`));
+      const patch=JSON.parse(await readFile(new URL('../public/game/combat/patch-manifest.json',import.meta.url),'utf8'));
+      for(const file of patch.files){const response=await fetch(`${base}/game/combat/${file.path}`);assert.equal(response.status,200);const bytes=Buffer.from(await response.arrayBuffer());assert.equal(createHash('sha256').update(bytes).digest('hex'),file.patched_sha256);}
+    });
   } finally {
     if (child.exitCode === null) { child.kill(); await once(child, 'exit'); }
   }

@@ -1,4 +1,4 @@
-import { setupControls } from './controls.js';
+import { setupControls } from './controls.js?v=combat2';
 
 const stage = document.getElementById('stage');
 const start = document.getElementById('start');
@@ -25,7 +25,7 @@ new PerformanceObserver(showResources).observe({ entryTypes: ['resource'] });
 
 async function boot() {
   const selectedMode = comboMode.value;
-  const gameBase = selectedMode === 'assist' ? './game/assist/' : selectedMode === 'relaxed' ? './game/relaxed/' : './game/';
+  const gameBase = selectedMode === 'combat' ? './game/combat/' : selectedMode === 'assist' ? './game/assist/' : selectedMode === 'relaxed' ? './game/relaxed/' : './game/';
   comboMode.disabled = true;
   controls.enable(false);
   start.disabled = true;
@@ -49,8 +49,14 @@ async function boot() {
       splashScreen: false, contextMenu: 'on'
     });
     player.ruffle().volume = muted ? 0 : 1;
-    controls.enable(true);
-    status.textContent = selectedMode === 'assist' ? '必杀宽松 · 小招免费' : selectedMode === 'relaxed' ? '普通连击宽松版 · 已载入' : '原版判定 · 已载入';
+    player.ruffle().traceObserver = message => {
+      if (!String(message).startsWith('MHHF_SKILL|')) return;
+      const [, result, name, cost] = String(message).split('|');
+      const label = ({ '飞空':'飞空', '飞空2':'飞空下劈', '鬼步1':'鬼步1', '鬼步2':'鬼步2', '鬼步3':'鬼步3', '龙出前':'龙出', '乱舞前':'乱舞' })[name] || '技能';
+      status.textContent = result === 'mp' ? `${label}：MP不足，需要${cost}` : result === 'busy' ? `${label}：当前动作不可衔接` : result === 'queue' ? `${label}：已缓冲衔接` : `${label}已起手 · 可继续方向＋攻击`;
+    };
+    controls.enable(true, selectedMode === 'combat');
+    status.textContent = selectedMode === 'combat' ? '战斗优化 · 大招100/130MP' : selectedMode === 'assist' ? '必杀宽松 · 小招免费' : selectedMode === 'relaxed' ? '普通连击宽松版 · 已载入' : '原版判定 · 已载入';
     fullscreen.disabled = sound.disabled = restart.disabled = false;
     start.hidden = true;
     player.focus();
