@@ -2,6 +2,8 @@
 
 使用 Ruffle 0.7.1 兼容运行原 SWF。保留原游戏逻辑、角色、关卡和动画；本工程提供本地网页播放器、资源服务、缩放、全屏与静音控制。
 
+在线试玩（手机建议横屏）：[https://solarecoding.github.io/MHHFPort/](https://solarecoding.github.io/MHHFPort/)。无需电脑开机或连接同一局域网。
+
 ## 启动
 
 需要 Node.js 18 或更高版本，无需安装 npm 依赖。Ruffle 运行库和游戏文件已随仓库保存。
@@ -71,7 +73,7 @@ archive/migration-manifest.json  从jobhunting迁入时的逐文件哈希清单
 
 本项目可部署为纯静态网站，无需在 GitHub 上运行 `server.mjs`。`npm run build` 会生成 `dist/`，只包含网页、游戏与 Ruffle，不包含归档、测试或本地日志；当前构建约63MB。不要手动修改 `dist/`，下次构建会重建该目录。
 
-已提供 `.github/workflows/pages.yml`：提交推送至 `main` 后，运行测试、构建并部署。首次需要仓库 Settings → Pages → Build and deployment → Source 选择 **GitHub Actions**，再推送提交或手动运行 Deploy GitHub Pages 工作流。成功后预期地址为 https://solarecoding.github.io/MHHFPort/ ，具体以工作流输出为准。当前仅准备配置，不表示该网址已经上线。
+已配置 `.github/workflows/pages.yml`：提交推送至 `main` 后，运行测试、构建并部署。仓库已公开，Settings → Pages → Build and deployment → Source 已设为 **GitHub Actions**。2026-10-31 首次部署成功，地址为 https://solarecoding.github.io/MHHFPort/ 。后续也可以手动运行 Deploy GitHub Pages 工作流。
 
 HTML 和游戏资源使用相对路径，支持 Pages 项目子目录，同时保持本地局域网入口可用。GitHub Pages 提供静态文件，玩家的手机仍执行游戏；不需要电脑持续开机。
 
