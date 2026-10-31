@@ -57,6 +57,15 @@ test('standalone repository serves preserved SWFs and Ruffle over HTTP', async t
         assert.equal(createHash('sha256').update(bytes).digest('hex'), character.patched_sha256);
       }
     });
+    await t.test('direction assist URLs serve the expected modified game', async () => {
+      const patch=JSON.parse(await readFile(new URL('../public/game/assist/patch-manifest.json',import.meta.url),'utf8'));
+      for(const file of patch.files){
+        const response=await fetch(`${base}/game/assist/${file.path}`);
+        assert.equal(response.status,200);
+        const bytes=Buffer.from(await response.arrayBuffer());
+        assert.equal(createHash('sha256').update(bytes).digest('hex'),file.patched_sha256);
+      }
+    });
   } finally {
     if (child.exitCode === null) { child.kill(); await once(child, 'exit'); }
   }

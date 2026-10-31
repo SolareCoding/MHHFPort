@@ -25,6 +25,7 @@ new PerformanceObserver(showResources).observe({ entryTypes: ['resource'] });
 
 async function boot() {
   const selectedMode = comboMode.value;
+  const gameBase = selectedMode === 'assist' ? './game/assist/' : selectedMode === 'relaxed' ? './game/relaxed/' : './game/';
   comboMode.disabled = true;
   controls.enable(false);
   start.disabled = true;
@@ -40,8 +41,8 @@ async function boot() {
       diagnostics.textContent = 'Ruffle 0.7.1\n' + JSON.stringify(player.ruffle().metadata, null, 2);
     });
     await player.ruffle().load({
-      url: new URL(selectedMode === 'relaxed' ? './game/relaxed/a5b.swf' : './game/a5b.swf', location.href).href,
-      base: new URL(selectedMode === 'relaxed' ? './game/relaxed/' : './game/', location.href).href,
+      url: new URL(gameBase + 'a5b.swf', location.href).href,
+      base: new URL(gameBase, location.href).href,
       autoplay: 'on', unmuteOverlay: 'visible', backgroundColor: '#ffffff',
       scale: 'showAll', forceScale: true, letterbox: 'on',
       allowScriptAccess: false, openUrlMode: 'deny', logLevel: 'warn',
@@ -49,7 +50,7 @@ async function boot() {
     });
     player.ruffle().volume = muted ? 0 : 1;
     controls.enable(true);
-    status.textContent = selectedMode === 'relaxed' ? '普通连击宽松版 · 已载入' : '原版判定 · 已载入';
+    status.textContent = selectedMode === 'assist' ? '必杀宽松 · 小招免费' : selectedMode === 'relaxed' ? '普通连击宽松版 · 已载入' : '原版判定 · 已载入';
     fullscreen.disabled = sound.disabled = restart.disabled = false;
     start.hidden = true;
     player.focus();

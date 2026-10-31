@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Local desktop browser player for the preserved integrated SWF",
-  "scripts": { "start": "node server.mjs", "build": "node scripts/build-pages.mjs", "patch:combos": "node scripts/patch-combo-window.mjs", "test": "node --test tests/server.test.mjs tests/combo.test.mjs" },
+  "scripts": { "start": "node server.mjs", "build": "node scripts/build-pages.mjs", "patch:combos": "node scripts/patch-combo-window.mjs", "patch:specials": "node scripts/patch-specials.mjs", "test": "node --test tests/server.test.mjs tests/combo.test.mjs tests/specials.test.mjs" },
   "engines": { "node": ">=18" },
   "ruffleVersion": "0.7.1"
 }

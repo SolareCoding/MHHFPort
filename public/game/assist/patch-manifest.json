@@ -1,0 +1,171 @@
+{
+  "fps": 25,
+  "description": "Extended invisible direction-recognition timelines; small specials free; large costs unchanged; original ordinary combo timer",
+  "files": [
+    {
+      "id": 0,
+      "path": "a5b.swf",
+      "original_sha256": "131a84797ea962be8bdb81943473251350509c3876abc8751d5f2634508fbf83",
+      "patched_sha256": "d224b9a2e84cf00ca2d58112fc35abd6514461b15bd699f4c1af46856fac0044",
+      "changes": [
+        {
+          "key": "b_cz",
+          "from": 5,
+          "to": 0
+        },
+        {
+          "key": "b_fk",
+          "from": 10,
+          "to": 0
+        },
+        {
+          "key": "b_gt1",
+          "from": 5,
+          "to": 0
+        },
+        {
+          "key": "b_gt2",
+          "from": 5,
+          "to": 0
+        },
+        {
+          "key": "b_gt3",
+          "from": 10,
+          "to": 0
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "path": "games/data/mhhf_w/1man.swf",
+      "original_sha256": "56d49c67d901b2f043426820c5fc67bf3c79d1cd44163ac968f0474148abb849",
+      "patched_sha256": "8d8fff135cc9ca59887b4c4abd87cfdc4e8b03bf892e55c37c707b0c0983fea9",
+      "changes": [
+        {
+          "sprite": 74,
+          "oldFrames": 176,
+          "newFrames": 352,
+          "jumps": 132
+        },
+        {
+          "sprite": 121,
+          "oldFrames": 84,
+          "newFrames": 168,
+          "jumps": 18
+        },
+        {
+          "sprite": 154,
+          "oldFrames": 34,
+          "newFrames": 68,
+          "jumps": 19
+        },
+        {
+          "sprite": 233,
+          "oldFrames": 24,
+          "newFrames": 48,
+          "jumps": 18
+        },
+        {
+          "sprite": 261,
+          "oldFrames": 24,
+          "newFrames": 48,
+          "jumps": 18
+        },
+        {
+          "sprite": 458,
+          "oldFrames": 34,
+          "newFrames": 68,
+          "jumps": 19
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "path": "games/data/mhhf_w/2man.swf",
+      "original_sha256": "a3df13e2bad65c487f4f3cc5a487f5ac816205eadb426a9d5d27753fe9a97195",
+      "patched_sha256": "17ff1879c950143290eb5194519380985f74caa4b62cbb0ff9853b946f89a2b8",
+      "changes": [
+        {
+          "sprite": 67,
+          "oldFrames": 176,
+          "newFrames": 352,
+          "jumps": 132
+        },
+        {
+          "sprite": 112,
+          "oldFrames": 84,
+          "newFrames": 168,
+          "jumps": 18
+        },
+        {
+          "sprite": 164,
+          "oldFrames": 34,
+          "newFrames": 68,
+          "jumps": 19
+        },
+        {
+          "sprite": 288,
+          "oldFrames": 24,
+          "newFrames": 48,
+          "jumps": 18
+        },
+        {
+          "sprite": 310,
+          "oldFrames": 24,
+          "newFrames": 48,
+          "jumps": 18
+        },
+        {
+          "sprite": 478,
+          "oldFrames": 34,
+          "newFrames": 68,
+          "jumps": 19
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "path": "games/data/mhhf_w/3man.swf",
+      "original_sha256": "c9af858f769ac8cbdc5894581f900634a208c12edc30d309646d923245f5e8f6",
+      "patched_sha256": "7ee49045d2518a7da4ecddaa8684377c14adea423f038a950e9e12c77f499f8b",
+      "changes": [
+        {
+          "sprite": 67,
+          "oldFrames": 176,
+          "newFrames": 352,
+          "jumps": 132
+        },
+        {
+          "sprite": 109,
+          "oldFrames": 84,
+          "newFrames": 168,
+          "jumps": 18
+        },
+        {
+          "sprite": 157,
+          "oldFrames": 34,
+          "newFrames": 68,
+          "jumps": 19
+        },
+        {
+          "sprite": 261,
+          "oldFrames": 24,
+          "newFrames": 48,
+          "jumps": 18
+        },
+        {
+          "sprite": 280,
+          "oldFrames": 24,
+          "newFrames": 48,
+          "jumps": 18
+        },
+        {
+          "sprite": 443,
+          "oldFrames": 34,
+          "newFrames": 68,
+          "jumps": 19
+        }
+      ]
+    }
+  ]
+}
