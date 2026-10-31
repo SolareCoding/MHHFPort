@@ -1,0 +1,20 @@
+Jump loc001f
+loc0005:Push "e", 7, false
+SetProperty
+Push "f", "e"
+SetVariable
+Jump loc006f
+loc001f:Push true
+Push false
+Push false
+Push true
+loc0033:If loc0044
+ConstantPool "", "bname"
+loc0044:If loc0056
+ConstantPool "e", "f", "g", "h"
+loc0056:If loc006a
+Push true
+Push false
+Jump loc0033
+loc006a:Jump loc0005
+loc006f:

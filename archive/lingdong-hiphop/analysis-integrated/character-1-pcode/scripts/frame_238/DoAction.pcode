@@ -1,0 +1,5 @@
+Push "_root"
+GetVariable
+Push "superB", true
+SetMember
+Play

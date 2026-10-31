@@ -1,0 +1,48 @@
+{
+  "collected_date": "2026-10-30",
+  "files": [
+    {
+      "label": "原版",
+      "file": "lingdong-hiphop-original.swf",
+      "source_page": "https://www.mhhf.com/game/play/208",
+      "download_url": "https://www.mhhf.com/files/game/208/25b.swf",
+      "bytes": 30209195,
+      "sha256": "08A76607EB7148B39B1D6E5F28732BA154AF79DF6BA8F9930A70CF65922263DD",
+      "signature": "CWS",
+      "swf_version": 7,
+      "uncompressed_bytes": 32145849,
+      "decompression_length_verified": true,
+      "top_level_tags_valid": true,
+      "end_tag_found": true,
+      "frame_rate": 25.0,
+      "root_timeline_frames": 10,
+      "avm": "AVM1 (SWF version 7/8; exact AS1 versus AS2 source syntax not determined)",
+      "top_level_do_action_tags": 6,
+      "top_level_do_init_action_tags": 0,
+      "top_level_do_abc_tags": 0,
+      "dependency_status": "Not fully analyzed; offline play and external dependency completeness unverified"
+    },
+    {
+      "label": "集成版",
+      "file": "lingdong-hiphop-integrated.swf",
+      "source_page": "https://www.mhhf.com/game/play/210",
+      "download_url": "https://www.mhhf.com/files/game/210/a5b.swf",
+      "bytes": 26845931,
+      "sha256": "131A84797EA962BE8BDB81943473251350509C3876ABC8751D5F2634508FBF83",
+      "signature": "CWS",
+      "swf_version": 8,
+      "uncompressed_bytes": 28333220,
+      "decompression_length_verified": true,
+      "top_level_tags_valid": true,
+      "end_tag_found": true,
+      "frame_rate": 25.0,
+      "root_timeline_frames": 6,
+      "avm": "AVM1 (SWF version 7/8; exact AS1 versus AS2 source syntax not determined)",
+      "top_level_do_action_tags": 5,
+      "top_level_do_init_action_tags": 0,
+      "top_level_do_abc_tags": 0,
+      "dependency_status": "Not fully analyzed; offline play and external dependency completeness unverified"
+    }
+  ],
+  "verification": "Static parsing only; game not executed"
+}

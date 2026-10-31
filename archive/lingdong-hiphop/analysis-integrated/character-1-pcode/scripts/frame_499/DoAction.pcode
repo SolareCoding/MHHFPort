@@ -1,0 +1,12 @@
+Push "_root"
+GetVariable
+Push "hp"
+GetMember
+Push 0.0
+Greater
+Not
+Not
+If loc0032
+GoToLabel "死亡"
+Play
+loc0032:

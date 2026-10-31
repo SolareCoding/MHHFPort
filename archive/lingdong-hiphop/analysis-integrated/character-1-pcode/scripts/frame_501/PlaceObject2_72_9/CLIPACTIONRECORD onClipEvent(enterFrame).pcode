@@ -1,0 +1,31 @@
+Jump loc003d
+loc0005:Push "e", "e"
+GetVariable
+Increment
+SetVariable
+Push "e"
+GetVariable
+Push 25
+Greater
+Not
+If loc0038
+Push "f", 1, "g"
+GetVariable
+Push "h"
+CallMethod
+Pop
+loc0038:Jump loc00a0
+loc003d:Push true
+Push false
+Push false
+Push true
+loc0051:If loc0075
+ConstantPool "i", "站", "_parent", "gotoAndPlay"
+loc0075:If loc0087
+ConstantPool "e", "f", "g", "h"
+loc0087:If loc009b
+Push true
+Push false
+Jump loc0051
+loc009b:Jump loc0005
+loc00a0:

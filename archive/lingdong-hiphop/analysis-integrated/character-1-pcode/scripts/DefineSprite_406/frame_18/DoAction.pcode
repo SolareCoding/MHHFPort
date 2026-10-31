@@ -1,0 +1,81 @@
+Jump loc00ef
+loc0005:Push 0.0, "e"
+GetVariable
+Push "f"
+GetMember
+Push "g"
+CallMethod
+Pop
+Push "h"
+GetVariable
+Push constant4
+DefineFunction "", 0 {
+Push constant5
+GetVariable
+With {
+Push constant6
+GetVariable
+Push 0.0
+Equals2
+Not
+If loc0096
+Push constant7
+GetVariable
+Push "e"
+GetVariable
+Push constant8
+GetMember
+Less2
+Not
+If loc0088
+Push constant7, constant7
+GetVariable
+Push 30
+Add2
+SetVariable
+Jump loc0096
+loc0088:Push constant9, 1, constant10
+CallFunction
+Pop
+loc0096:Push constant6
+GetVariable
+Push 1
+Equals2
+Not
+If loc00e9
+Push constant7
+GetVariable
+Push "e"
+GetVariable
+Push constant11
+GetMember
+Greater
+Not
+If loc00db
+Push constant7, constant7
+GetVariable
+Push 30
+Subtract
+SetVariable
+Jump loc00e9
+loc00db:Push constant9, 1, constant10
+CallFunction
+Pop
+}
+}
+loc00e9:SetMember
+Jump loc0180
+loc00ef:Push true
+Push false
+Push false
+Push true
+loc0103:If loc0155
+ConstantPool "_root", "w_wdd", "start", "this", "onEnterFrame", "_parent", "f", "_x", "smx", "站", "gotoAndPlay", "sx"
+loc0155:If loc0167
+ConstantPool "e", "f", "g", "h"
+loc0167:If loc017b
+Push true
+Push false
+Jump loc0103
+loc017b:Jump loc0005
+loc0180:

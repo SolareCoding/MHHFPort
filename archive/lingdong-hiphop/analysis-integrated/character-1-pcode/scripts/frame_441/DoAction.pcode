@@ -1,0 +1,53 @@
+Jump loc0088
+loc0005:Push "e"
+GetVariable
+Push "f"
+GetMember
+Push "g"
+GetMember
+Push 0.0
+Equals2
+Not
+If loc0059
+Push "e"
+GetVariable
+Push "f"
+GetMember
+Push "h", "e"
+GetVariable
+Push "f"
+GetMember
+Push "h"
+GetMember
+Push 10
+Add2
+SetMember
+Jump loc0083
+loc0059:Push "e"
+GetVariable
+Push "f"
+GetMember
+Push "h", "e"
+GetVariable
+Push "f"
+GetMember
+Push "h"
+GetMember
+Push 10
+Subtract
+SetMember
+loc0083:Jump loc00e4
+loc0088:Push true
+Push false
+Push false
+Push true
+loc009c:If loc00b9
+ConstantPool "_parent", "Throw", "f", "_x"
+loc00b9:If loc00cb
+ConstantPool "e", "f", "g", "h"
+loc00cb:If loc00df
+Push true
+Push false
+Jump loc009c
+loc00df:Jump loc0005
+loc00e4:

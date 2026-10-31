@@ -1,0 +1,11 @@
+{
+  "ffdec_version": "26.4.0",
+  "release_url": "https://github.com/jindrapetrik/jpexs-decompiler/releases/tag/version26.4.0",
+  "download_url": "https://github.com/jindrapetrik/jpexs-decompiler/releases/download/version26.4.0/ffdec_26.4.0.zip",
+  "archive_sha256": "56CE960AEAFC7CAF034E2052BA49F878A883F7C7CA690DA6EEFFCA9587B5E4B9",
+  "java_path": "C:\\Users\\Solare\\.jdks\\corretto-17.0.15\\bin\\java.exe",
+  "java_version": "17.0.15",
+  "script_deobfuscation": "One-shot -config autoDeobfuscate=true; original role exports retained separately",
+  "target_execution": false,
+  "original_main_hash_verified": true
+}

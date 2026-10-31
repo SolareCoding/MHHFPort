@@ -1,0 +1,6 @@
+Push "walk", 1
+SetVariable
+Push "_root"
+GetVariable
+Push "dong", 0.0
+SetMember

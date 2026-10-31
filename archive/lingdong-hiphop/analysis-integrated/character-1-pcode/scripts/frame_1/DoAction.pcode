@@ -1,0 +1,240 @@
+Jump loc0406
+loc0005:DefineFunction2 "huifu", 0, 2, false, true, true, false, true, false, true, false, false {
+Push register1, "e", register1, "f"
+GetMember
+SetMember
+Push register1, "g", register1, "h"
+GetMember
+SetMember
+Push register1, constant4, register1, constant5
+GetMember
+SetMember
+}
+DefineFunction2 "talk", 0, 2, false, true, true, false, true, false, true, false, false {
+Push constant6, 4
+RandomNumber
+SetVariable
+Push constant6
+GetVariable
+Push 0.0
+Equals2
+Not
+If loc0088
+Push 0.0, register1, constant7
+GetMember
+Push constant8
+CallMethod
+Pop
+loc0088:Push constant6
+GetVariable
+Push 1
+Equals2
+Not
+If loc00b5
+Push 0.0, register1, constant9
+GetMember
+Push constant8
+CallMethod
+Pop
+loc00b5:Push constant6
+GetVariable
+Push 2
+Equals2
+Not
+If loc00e2
+Push 0.0, register1, constant10
+GetMember
+Push constant8
+CallMethod
+Pop
+}
+loc00e2:DefineFunction2 "talk2", 0, 2, false, true, true, false, true, false, true, false, false {
+Push constant6, 2
+RandomNumber
+SetVariable
+Push constant6
+GetVariable
+Push 0.0
+Equals2
+Not
+If loc012f
+Push 0.0, register1, constant11
+GetMember
+Push constant8
+CallMethod
+Pop
+loc012f:Push constant6
+GetVariable
+Push 1
+Equals2
+Not
+If loc015c
+Push 0.0, register1, constant12
+GetMember
+Push constant8
+CallMethod
+Pop
+}
+loc015c:DefineFunction2 "atkSS", 0, 2, false, false, true, false, true, false, false, true, false {
+Push constant13
+GetVariable
+Push 0.0
+Equals2
+Not
+If loc019c
+Push 1, constant14, constant15, 3, register1, constant16
+CallMethod
+Pop
+loc019c:Push constant13
+GetVariable
+Push 1
+Equals2
+Not
+If loc01c8
+Push 1, constant14, constant17, 3, register1, constant16
+CallMethod
+Pop
+loc01c8:Push constant13
+GetVariable
+Push 2
+Equals2
+Not
+If loc01f4
+Push 1, constant14, constant18, 3, register1, constant16
+CallMethod
+Pop
+}
+loc01f4:Push constant19
+GetVariable
+Push constant20, false
+SetMember
+Push constant19
+GetVariable
+Push constant21, constant22
+SetMember
+Push constant23, 1, constant24
+GetVariable
+Push constant25
+GetMember
+Push constant26
+CallMethod
+Pop
+Stop
+Push constant27, 5
+SetVariable
+Push constant28, 0.0
+SetVariable
+Push constant29, 8, 87.2
+SetProperty
+Push constant29, 9, 90.1
+SetProperty
+Push constant30, constant29, 2
+GetProperty
+SetVariable
+Push constant31, 0.0
+SetVariable
+Push constant32, false
+SetVariable
+Push constant33, false
+SetVariable
+Push constant34, true
+DefineLocal
+Push constant35, 0.0
+DefineLocal
+Push constant36, -15
+DefineLocal
+Push constant37, 2
+DefineLocal
+Push constant38, constant39
+GetVariable
+Push constant40
+GetMember
+Push 2
+Divide
+Push constant39
+GetVariable
+Push constant41
+GetMember
+Add2
+SetVariable
+Push constant42
+GetVariable
+Push constant43
+DefineFunction2 "", 0, 4, true, true, true, false, true, false, false, true, false {
+Push 0.0, constant44
+GetVariable
+Push constant45
+CallMethod
+Pop
+Push register2, constant46
+GetMember
+Push 0.0
+Equals2
+Not
+If loc0400
+Push constant34
+GetVariable
+Not
+If loc0386
+Push 100000, register3, constant47
+GetMember
+Push constant48
+GetMember
+Push 100
+Multiply
+Add2
+Push constant49
+GetVariable
+Push 100
+Modulo
+Add2
+Push 1, register1, constant50
+CallMethod
+Pop
+GoToLabel "跳"
+Jump loc03be
+loc0386:Push 100000, constant29, 1
+GetProperty
+Push 100
+Multiply
+Add2
+Push constant49
+GetVariable
+Push 100
+Modulo
+Add2
+Push 1, register1, constant50
+CallMethod
+Pop
+loc03be:Push constant51
+GetVariable
+Push 15
+Less2
+Not
+If loc03e2
+Push constant51, constant51
+GetVariable
+Increment
+SetVariable
+Jump loc0400
+loc03e2:Push constant31, 0.0
+SetVariable
+Push constant51, 0.0
+SetVariable
+}
+loc0400:SetMember
+Jump loc0596
+loc0406:Push true
+Push false
+Push false
+Push true
+loc041a:If loc056b
+ConstantPool "long", "m_long", "rgb", "m_rgb", "tm", "m_tm", "bb", "m_gj1", "start", "m_gj2", "m_gj3", "m_dgj", "m_dgj2", "atkS", "atk_rock", "atk_nos", "attachMovie", "atk_rock2", "atk_cbs", "Stage", "showMenu", "scaleMode", "noScale", "*", "System", "security", "allowDomain", "speed", "f", "", "cc", "hitLeave", "freeze", "fly", "inair", "yinc", "jumpspeed", "g", "ldd", "_root", "syy", "sy", "this", "onEnterFrame", "mc", "onEnterFrameFunc", "pause", "yinyin", "_y", "id", "swapDepths", "t"
+loc056b:If loc057d
+ConstantPool "e", "f", "g", "h"
+loc057d:If loc0591
+Push true
+Push false
+Jump loc041a
+loc0591:Jump loc0005
+loc0596:

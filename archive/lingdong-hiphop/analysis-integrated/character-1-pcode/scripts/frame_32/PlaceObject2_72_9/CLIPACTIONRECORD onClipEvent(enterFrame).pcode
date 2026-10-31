@@ -1,0 +1,103 @@
+Jump loc0142
+loc0005:Push "e"
+GetVariable
+With {
+Push "f"
+GetVariable
+Push "g"
+GetMember
+Push 1, "h"
+GetVariable
+Push constant4
+CallMethod
+PushDuplicate
+Not
+If loc004e
+Pop
+Push "f"
+GetVariable
+Push constant5
+GetMember
+Push 0.0
+Equals2
+loc004e:PushDuplicate
+Not
+If loc0073
+Pop
+Push "f"
+GetVariable
+Push constant6
+GetMember
+Push 1, "h"
+GetVariable
+Push constant4
+CallMethod
+loc0073:Not
+If loc008c
+Push constant7, 1, constant8
+CallFunction
+Pop
+Jump loc013d
+loc008c:Push "f"
+GetVariable
+Push "g"
+GetMember
+Push 1, "h"
+GetVariable
+Push constant4
+CallMethod
+PushDuplicate
+Not
+If loc00ca
+Pop
+Push "f"
+GetVariable
+Push constant5
+GetMember
+Push 0.0
+Equals2
+loc00ca:Not
+If loc013d
+Push constant9
+GetVariable
+Push 0.0
+Equals2
+Not
+If loc00f7
+Push constant10, 1, constant8
+CallFunction
+Pop
+loc00f7:Push constant9
+GetVariable
+Push 1
+Equals2
+Not
+If loc011a
+Push constant11, 1, constant8
+CallFunction
+Pop
+loc011a:Push constant9
+GetVariable
+Push 2
+Equals2
+Not
+If loc013d
+Push constant12, 1, constant8
+CallFunction
+Pop
+}
+loc013d:Jump loc01ed
+loc0142:Push true
+Push false
+Push false
+Push true
+loc0156:If loc01c2
+ConstantPool "_parent", "_root", "atk", "Key", "isDown", "atkpress", "down", "特殊技", "gotoAndPlay", "hitLeave", "攻击1", "攻击2", "攻击3"
+loc01c2:If loc01d4
+ConstantPool "e", "f", "g", "h"
+loc01d4:If loc01e8
+Push true
+Push false
+Jump loc0156
+loc01e8:Jump loc0005
+loc01ed:

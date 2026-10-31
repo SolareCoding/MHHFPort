@@ -1,0 +1,14 @@
+stop();
+walk = 0;
+hitting = 0;
+startJump = 0;
+_root.dong = 0;
+_root.jump2 = 0;
+freeze = false;
+fly = false;
+atkS = 0;
+long = 0;
+_root.lwalk = 0;
+_root.rwalk = 0;
+_root.superB = false;
+take = false;

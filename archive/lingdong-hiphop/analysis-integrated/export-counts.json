@@ -1,0 +1,30 @@
+[
+  {
+    "scope": "export",
+    "scripts": 2154,
+    "images": 706,
+    "sound_files": 107,
+    "svg_shapes": 1308
+  },
+  {
+    "scope": "characters\\1",
+    "scripts": 570,
+    "images": 172,
+    "sound_files": 3,
+    "svg_shapes": 301
+  },
+  {
+    "scope": "characters\\2",
+    "scripts": 532,
+    "images": 192,
+    "sound_files": 3,
+    "svg_shapes": 298
+  },
+  {
+    "scope": "characters\\3",
+    "scripts": 560,
+    "images": 180,
+    "sound_files": 3,
+    "svg_shapes": 277
+  }
+]

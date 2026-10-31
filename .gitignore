@@ -5,3 +5,4 @@ node_modules/
 !.env.example
 coverage/
 test-results/
+!archive/lingdong-hiphop/analysis-integrated/*.log

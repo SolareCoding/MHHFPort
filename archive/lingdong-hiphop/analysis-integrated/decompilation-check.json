@@ -1,0 +1,22 @@
+[
+  {
+    "scope": "export",
+    "files": 2154,
+    "files_with_pseudo_operators": 0
+  },
+  {
+    "scope": "characters-deobfuscated\\1",
+    "files": 570,
+    "files_with_pseudo_operators": 0
+  },
+  {
+    "scope": "characters-deobfuscated\\2",
+    "files": 532,
+    "files_with_pseudo_operators": 0
+  },
+  {
+    "scope": "characters-deobfuscated\\3",
+    "files": 560,
+    "files_with_pseudo_operators": 0
+  }
+]

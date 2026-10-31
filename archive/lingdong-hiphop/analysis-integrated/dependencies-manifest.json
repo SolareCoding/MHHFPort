@@ -1,0 +1,26 @@
+[
+  {
+    "role": 1,
+    "download_url": "https://www.mhhf.com/files/game/210/games/data/mhhf_w/1man.swf",
+    "file": "dependencies/1man.swf",
+    "bytes": 3143421,
+    "sha256": "56d49c67d901b2f043426820c5fc67bf3c79d1cd44163ac968f0474148abb849",
+    "format_verified": true
+  },
+  {
+    "role": 2,
+    "download_url": "https://www.mhhf.com/files/game/210/games/data/mhhf_w/2man.swf",
+    "file": "dependencies/2man.swf",
+    "bytes": 2018041,
+    "sha256": "a3df13e2bad65c487f4f3cc5a487f5ac816205eadb426a9d5d27753fe9a97195",
+    "format_verified": true
+  },
+  {
+    "role": 3,
+    "download_url": "https://www.mhhf.com/files/game/210/games/data/mhhf_w/3man.swf",
+    "file": "dependencies/3man.swf",
+    "bytes": 1961086,
+    "sha256": "c9af858f769ac8cbdc5894581f900634a208c12edc30d309646d923245f5e8f6",
+    "format_verified": true
+  }
+]

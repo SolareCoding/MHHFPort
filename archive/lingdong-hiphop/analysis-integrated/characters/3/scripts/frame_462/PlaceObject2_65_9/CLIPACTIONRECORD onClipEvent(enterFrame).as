@@ -1,0 +1,29 @@
+onClipEvent(enterFrame){
+   §§push(true);
+   §§push(false);
+   §§push(false);
+   §§push(true);
+   while(true)
+   {
+      if(§§pop())
+      {
+      }
+      if(§§pop())
+      {
+      }
+      if(§§pop())
+      {
+         break;
+      }
+      §§push(true);
+      §§push(false);
+   }
+   with(e)
+   {
+      if(h[§§constant(4)](f.g) && f[§§constant(5)] == 0 && h[§§constant(4)](f[§§constant(6)]) && f[§§constant(7)] == 0 && f[§§constant(8)] > 10)
+      {
+         f[§§constant(8)] -= 10;
+         §§constant(10)(§§constant(9));
+      }
+   }
+}

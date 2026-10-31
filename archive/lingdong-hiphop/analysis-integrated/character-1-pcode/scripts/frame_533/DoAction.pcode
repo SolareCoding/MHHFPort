@@ -1,0 +1,75 @@
+Jump loc00d9
+loc0005:Stop
+Push "e"
+GetVariable
+Push "f"
+GetMember
+Push 0.0
+Greater
+Not
+If loc008a
+Push "e"
+GetVariable
+Push "f", "e"
+GetVariable
+Push "f"
+GetMember
+Decrement
+SetMember
+Push "g"
+GetVariable
+Push "h", true
+SetMember
+Push "e"
+GetVariable
+Push constant4, "e"
+GetVariable
+Push constant5
+GetMember
+SetMember
+Push "e"
+GetVariable
+Push constant6, "e"
+GetVariable
+Push constant7
+GetMember
+SetMember
+Push "e"
+GetVariable
+Push constant8, 99
+SetMember
+Play
+Jump loc00d4
+loc008a:Push "e"
+GetVariable
+Push constant9, 1
+SetMember
+Push 2, 1, "g"
+GetVariable
+Push constant10
+GetMember
+Push constant11
+GetMember
+Push constant12
+CallMethod
+Pop
+Push 0.0, constant13
+GetVariable
+Push constant14
+CallMethod
+Pop
+loc00d4:Jump loc0185
+loc00d9:Push true
+Push false
+Push false
+Push true
+loc00ed:If loc015a
+ConstantPool "_root", "life", "_parent", "ming1", "hp", "maxhp", "mp", "maxmp", "Time", "over", "zhuang", "gover", "gotoAndPlay", "this", "removeMovieClip"
+loc015a:If loc016c
+ConstantPool "e", "f", "g", "h"
+loc016c:If loc0180
+Push true
+Push false
+Jump loc00ed
+loc0180:Jump loc0005
+loc0185:

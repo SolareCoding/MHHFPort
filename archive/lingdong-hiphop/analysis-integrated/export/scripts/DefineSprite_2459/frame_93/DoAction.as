@@ -1,0 +1,10 @@
+qj1.removeMovieClip();
+bj1.removeMovieClip();
+zhuang.removeMovieClip();
+firedrong.removeMovieClip();
+gd.removeMovieClip();
+gd2.removeMovieClip();
+_root.BR = false;
+aaaa = 1;
+_root.conceal_2 = 0;
+gotoAndStop(70);

@@ -1,0 +1,1 @@
+gd.gotoAndPlay(2);

@@ -1,0 +1,23 @@
+§§push(true);
+§§push(false);
+§§push(false);
+§§push(true);
+while(true)
+{
+   if(§§pop())
+   {
+   }
+   if(§§pop())
+   {
+   }
+   if(§§pop())
+   {
+      break;
+   }
+   §§push(true);
+   §§push(false);
+}
+e.f();
+e.g.h();
+§§constant(4)();
+e[§§constant(5)] -= e[§§constant(6)];

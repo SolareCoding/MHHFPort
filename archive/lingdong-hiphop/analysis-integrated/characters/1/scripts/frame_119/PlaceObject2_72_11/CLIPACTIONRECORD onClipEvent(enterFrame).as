@@ -1,0 +1,25 @@
+onClipEvent(enterFrame){
+   §§push(true);
+   §§push(false);
+   §§push(false);
+   §§push(true);
+   while(true)
+   {
+      if(§§pop())
+      {
+      }
+      if(§§pop())
+      {
+      }
+      if(§§pop())
+      {
+         break;
+      }
+      §§push(true);
+      §§push(false);
+   }
+   if(g.h(e.f) && g.h(e[§§constant(4)]) && e[§§constant(5)] == 0)
+   {
+      eval(§§constant(7))[§§constant(8)](§§constant(6));
+   }
+}

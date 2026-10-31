@@ -43,7 +43,19 @@ server.mjs              零第三方依赖的本地 HTTP 服务
 assets-manifest.json    游戏文件与运行库来源、大小、SHA-256
 tests/server.test.mjs   实际 HTTP 资源、MIME 与文件身份检查
 docs/porting-notes.md   当前状态与后续移动端适配范围
+docs/research/           早期移植方案调研
+archive/lingdong-hiphop/ 原始文件、反编译结果、素材、工具与旧试玩工程
+archive/migration-manifest.json  从jobhunting迁入时的逐文件哈希清单
 ```
+
+## 调研和逆向资料
+
+- [移植路线调研](docs/research/flash-android-port-options-2026-10-30.md)
+- [原始SWF与采集记录](archive/lingdong-hiphop/README.md)
+- [集成版静态分析与导出目录](archive/lingdong-hiphop/analysis-integrated/README.md)
+- [归档目录说明](archive/README.md)
+
+日常开发和启动使用仓库根目录的工程。归档保留历史资料原有相对结构；日志中的旧绝对路径属于原始分析证据，不是当前运行依赖。
 
 ## 验证
 

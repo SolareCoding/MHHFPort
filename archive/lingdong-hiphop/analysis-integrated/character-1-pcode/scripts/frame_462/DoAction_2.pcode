@@ -1,0 +1,37 @@
+Jump loc0064
+loc0005:Push "e"
+GetVariable
+Push "f"
+GetMember
+Push 0.0
+Greater
+Not
+Not
+If loc002d
+GoToLabel "倒"
+Play
+loc002d:Push "g", false
+SetVariable
+Push "e"
+GetVariable
+Push "h", 0.0
+SetMember
+Push "e"
+GetVariable
+Push constant4, 0.0
+SetMember
+Jump loc00c7
+loc0064:Push true
+Push false
+Push false
+Push true
+loc0078:If loc009c
+ConstantPool "_root", "hp", "take", "lwalk", "rwalk"
+loc009c:If loc00ae
+ConstantPool "e", "f", "g", "h"
+loc00ae:If loc00c2
+Push true
+Push false
+Jump loc0078
+loc00c2:Jump loc0005
+loc00c7:

@@ -1,0 +1,150 @@
+Jump loc01d8
+loc0005:Push 0.0, "e"
+GetVariable
+Push "f"
+GetMember
+Push "g"
+CallMethod
+Pop
+Push "h", "h"
+GetVariable
+Decrement
+SetVariable
+Push constant4
+GetVariable
+Push constant5
+GetMember
+Push constant6
+GetMember
+Push 0.0
+Equals2
+Not
+If loc007f
+Push constant4
+GetVariable
+Push constant5
+GetMember
+Push constant7, constant4
+GetVariable
+Push constant5
+GetMember
+Push constant7
+GetMember
+Push 10
+Subtract
+SetMember
+Jump loc00a9
+loc007f:Push constant4
+GetVariable
+Push constant5
+GetMember
+Push constant7, constant4
+GetVariable
+Push constant5
+GetMember
+Push constant7
+GetMember
+Push 10
+Add2
+SetMember
+loc00a9:Push 1, constant8, constant9, 3, constant10
+GetVariable
+Push constant11
+CallMethod
+Pop
+Push constant4
+GetVariable
+Push constant5
+GetMember
+Push constant12, constant4
+GetVariable
+Push constant5
+GetMember
+Push constant12
+GetMember
+Push "e"
+GetVariable
+Push constant13
+GetMember
+Subtract
+SetMember
+Push "e"
+GetVariable
+Push constant14, "e"
+GetVariable
+Push constant14
+GetMember
+Push 5
+Add2
+SetMember
+Push "e"
+GetVariable
+Push constant15, "e"
+GetVariable
+Push constant15
+GetMember
+Push 1
+Add2
+SetMember
+Push constant4
+GetVariable
+Push constant5
+GetMember
+Push constant12
+GetMember
+Push 0.0
+Greater
+Not
+Not
+If loc0176
+Push constant16, 1, constant4
+GetVariable
+Push constant5
+GetMember
+Push constant17
+CallMethod
+Pop
+Push constant18, false
+SetVariable
+loc0176:Push "h"
+GetVariable
+Push 0.0
+Greater
+Not
+Not
+If loc01d3
+Push constant16, 1, constant4
+GetVariable
+Push constant5
+GetMember
+Push constant17
+CallMethod
+Pop
+Push constant4
+GetVariable
+Push constant5
+GetMember
+Push constant19, constant4
+GetVariable
+Push constant5
+GetMember
+Push constant20
+GetMember
+SetMember
+Push constant18, false
+SetVariable
+loc01d3:Jump loc029f
+loc01d8:Push true
+Push false
+Push false
+Push true
+loc01ec:If loc0274
+ConstantPool "_root", "hit_q3", "start", "iiii", "_parent", "Throw", "f", "_x", "atk_rock", "atk_rock2", "this", "attachMovie", "hp", "MAtk", "s", "mp", "倒", "gotoAndPlay", "take", "_name", "myname"
+loc0274:If loc0286
+ConstantPool "e", "f", "g", "h"
+loc0286:If loc029a
+Push true
+Push false
+Jump loc01ec
+loc029a:Jump loc0005
+loc029f:

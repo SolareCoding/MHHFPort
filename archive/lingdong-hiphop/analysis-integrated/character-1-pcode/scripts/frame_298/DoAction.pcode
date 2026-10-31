@@ -1,0 +1,4 @@
+Push true
+If loc000f
+Jump loc000f
+loc000f:

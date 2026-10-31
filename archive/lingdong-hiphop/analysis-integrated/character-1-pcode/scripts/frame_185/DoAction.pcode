@@ -1,0 +1,7 @@
+Push 0.0, "_root"
+GetVariable
+Push "x_sz"
+GetMember
+Push "start"
+CallMethod
+Pop

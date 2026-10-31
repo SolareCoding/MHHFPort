@@ -1,0 +1,22 @@
+§§push(true);
+§§push(false);
+§§push(false);
+§§push(true);
+while(true)
+{
+   if(§§pop())
+   {
+   }
+   if(§§pop())
+   {
+   }
+   if(§§pop())
+   {
+      break;
+   }
+   §§push(true);
+   §§push(false);
+}
+e.f();
+e.g.h();
+e[§§constant(4)].h();

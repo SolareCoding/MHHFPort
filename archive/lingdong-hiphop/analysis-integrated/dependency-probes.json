@@ -1,0 +1,20 @@
+[
+  {
+    "Url": "https://www.mhhf.com/files/game/210/games/data/mhhf_w/1man.swf",
+    "Status": 200,
+    "Type": [
+      "application/x-shockwave-flash"
+    ],
+    "Length": [
+      "3143421"
+    ]
+  },
+  {
+    "Url": "https://www.mhhf.com/games/data/mhhf_w/1man.swf",
+    "Error": "Response status code does not indicate success: 404 ()."
+  },
+  {
+    "Url": "https://www.mhhf.net/games/data/mhhf_w/1man.swf",
+    "Error": "The request was canceled due to the configured HttpClient.Timeout of 10 seconds elapsing."
+  }
+]

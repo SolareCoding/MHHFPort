@@ -1,0 +1,111 @@
+Jump loc0190
+loc0005:Push "e"
+GetVariable
+Push "f"
+GetMember
+Push 1, "g"
+GetVariable
+Push "h"
+CallMethod
+Not
+If loc003e
+Push "e"
+GetVariable
+Push constant4, 1
+SetMember
+Jump loc0053
+loc003e:Push "e"
+GetVariable
+Push constant4, 0.0
+SetMember
+loc0053:Push "e"
+GetVariable
+Push constant5
+GetMember
+Push 1, "g"
+GetVariable
+Push "h"
+CallMethod
+Not
+If loc008c
+Push "e"
+GetVariable
+Push constant6, 1
+SetMember
+Jump loc00a1
+loc008c:Push "e"
+GetVariable
+Push constant6, 0.0
+SetMember
+loc00a1:Push "e"
+GetVariable
+Push constant7
+GetMember
+Push 1, "g"
+GetVariable
+Push "h"
+CallMethod
+Not
+If loc00da
+Push "e"
+GetVariable
+Push constant8, 1
+SetMember
+Jump loc00ef
+loc00da:Push "e"
+GetVariable
+Push constant8, 0.0
+SetMember
+loc00ef:Push "e"
+GetVariable
+Push constant9
+GetMember
+Push 1, "g"
+GetVariable
+Push "h"
+CallMethod
+Not
+If loc0128
+Push "e"
+GetVariable
+Push constant10, 1
+SetMember
+Jump loc013d
+loc0128:Push "e"
+GetVariable
+Push constant10, 0.0
+SetMember
+loc013d:Push "e"
+GetVariable
+Push constant11
+GetMember
+Push 1, "g"
+GetVariable
+Push "h"
+CallMethod
+Not
+If loc0176
+Push "e"
+GetVariable
+Push constant12, 1
+SetMember
+Jump loc018b
+loc0176:Push "e"
+GetVariable
+Push constant12, 0.0
+SetMember
+loc018b:Jump loc0210
+loc0190:Push true
+Push false
+Push false
+Push true
+loc01a4:If loc01e5
+ConstantPool "_root", "left", "Key", "isDown", "ll", "right", "rr", "up", "uu", "down", "dd", "atk", "gg"
+loc01e5:If loc01f7
+ConstantPool "e", "f", "g", "h"
+loc01f7:If loc020b
+Push true
+Push false
+Jump loc01a4
+loc020b:Jump loc0005
+loc0210:

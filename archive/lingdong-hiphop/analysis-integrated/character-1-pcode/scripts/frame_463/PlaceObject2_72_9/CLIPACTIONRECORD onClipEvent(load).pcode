@@ -1,0 +1,51 @@
+Jump loc0097
+loc0005:DefineFunction2 "atkFly", 0, 3, true, true, true, false, true, false, true, false, false {
+Push register2, "e"
+GetMember
+Push 0.0
+Equals2
+PushDuplicate
+Not
+If loc0044
+Pop
+Push register2, "f"
+GetMember
+Push register1, "g"
+GetMember
+Greater
+loc0044:Not
+If loc0065
+Push register2, "f", register2, "f"
+GetMember
+Push 5
+Subtract
+SetMember
+Jump loc0092
+loc0065:Push register2, "f"
+GetMember
+Push register1, "h"
+GetMember
+Less2
+Not
+If loc0092
+Push register2, "f", register2, "f"
+GetMember
+Push 5
+Add2
+SetMember
+}
+loc0092:Jump loc00ec
+loc0097:Push true
+Push false
+Push false
+Push true
+loc00ab:If loc00c1
+ConstantPool "f", "_x", "sx", "smx"
+loc00c1:If loc00d3
+ConstantPool "e", "f", "g", "h"
+loc00d3:If loc00e7
+Push true
+Push false
+Jump loc00ab
+loc00e7:Jump loc0005
+loc00ec:

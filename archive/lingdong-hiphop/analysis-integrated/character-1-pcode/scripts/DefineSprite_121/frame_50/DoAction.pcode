@@ -1,0 +1,338 @@
+Jump loc040e
+loc0005:Push "e"
+GetVariable
+Push "f"
+GetMember
+Push 0.0
+Equals2
+PushDuplicate
+Not
+If loc003b
+Pop
+Push "e"
+GetVariable
+Push "g"
+GetMember
+Push 1
+Equals2
+loc003b:PushDuplicate
+Not
+If loc005c
+Pop
+Push "e"
+GetVariable
+Push "h"
+GetMember
+Push 0.0
+Equals2
+loc005c:PushDuplicate
+Not
+If loc007d
+Pop
+Push "e"
+GetVariable
+Push constant4
+GetMember
+Push 0.0
+Equals2
+loc007d:PushDuplicate
+Not
+If loc009e
+Pop
+Push constant5
+GetVariable
+Push constant6
+GetMember
+Push 0.0
+Equals2
+loc009e:PushDuplicate
+Not
+If loc00bb
+Pop
+Push "e"
+GetVariable
+Push constant7
+GetMember
+Push 1
+Equals2
+loc00bb:PushDuplicate
+Not
+If loc00dc
+Pop
+Push "e"
+GetVariable
+Push constant8
+GetMember
+Push 0.0
+Equals2
+loc00dc:PushDuplicate
+Not
+If loc00fe
+Pop
+Push "e"
+GetVariable
+Push constant9
+GetMember
+Push "e"
+GetVariable
+Push constant10
+GetMember
+Less2
+Not
+loc00fe:Not
+If loc0144
+Push "e"
+GetVariable
+Push constant11, 1
+SetMember
+Push 0.0, "e"
+GetVariable
+Push constant12
+CallMethod
+Pop
+Push constant13, 1, constant5
+GetVariable
+Push constant14
+CallMethod
+Pop
+Jump loc020b
+loc0144:Push "e"
+GetVariable
+Push "f"
+GetMember
+Push 0.0
+Equals2
+PushDuplicate
+Not
+If loc017a
+Pop
+Push "e"
+GetVariable
+Push "g"
+GetMember
+Push 1
+Equals2
+loc017a:PushDuplicate
+Not
+If loc019b
+Pop
+Push "e"
+GetVariable
+Push "h"
+GetMember
+Push 0.0
+Equals2
+loc019b:PushDuplicate
+Not
+If loc01bc
+Pop
+Push "e"
+GetVariable
+Push constant4
+GetMember
+Push 0.0
+Equals2
+loc01bc:PushDuplicate
+Not
+If loc01dd
+Pop
+Push constant5
+GetVariable
+Push constant6
+GetMember
+Push 0.0
+Equals2
+loc01dd:PushDuplicate
+Not
+If loc01ff
+Pop
+Push "e"
+GetVariable
+Push constant9
+GetMember
+Push "e"
+GetVariable
+Push constant10
+GetMember
+Less2
+Not
+loc01ff:Not
+If loc020b
+GotoFrame 79
+Play
+loc020b:Push "e"
+GetVariable
+Push "f"
+GetMember
+Push 1
+Equals2
+PushDuplicate
+Not
+If loc0241
+Pop
+Push "e"
+GetVariable
+Push "g"
+GetMember
+Push 0.0
+Equals2
+loc0241:PushDuplicate
+Not
+If loc0262
+Pop
+Push "e"
+GetVariable
+Push "h"
+GetMember
+Push 0.0
+Equals2
+loc0262:PushDuplicate
+Not
+If loc0283
+Pop
+Push "e"
+GetVariable
+Push constant4
+GetMember
+Push 0.0
+Equals2
+loc0283:PushDuplicate
+Not
+If loc02a0
+Pop
+Push constant5
+GetVariable
+Push constant6
+GetMember
+Push 1
+Equals2
+loc02a0:PushDuplicate
+Not
+If loc02bd
+Pop
+Push "e"
+GetVariable
+Push constant7
+GetMember
+Push 1
+Equals2
+loc02bd:PushDuplicate
+Not
+If loc02de
+Pop
+Push "e"
+GetVariable
+Push constant8
+GetMember
+Push 0.0
+Equals2
+loc02de:PushDuplicate
+Not
+If loc0300
+Pop
+Push "e"
+GetVariable
+Push constant9
+GetMember
+Push "e"
+GetVariable
+Push constant10
+GetMember
+Less2
+Not
+loc0300:Not
+If loc0346
+Push "e"
+GetVariable
+Push constant11, 1
+SetMember
+Push 0.0, "e"
+GetVariable
+Push constant12
+CallMethod
+Pop
+Push constant13, 1, constant5
+GetVariable
+Push constant14
+CallMethod
+Pop
+Jump loc0409
+loc0346:Push "e"
+GetVariable
+Push "f"
+GetMember
+Push 1
+Equals2
+PushDuplicate
+Not
+If loc037c
+Pop
+Push "e"
+GetVariable
+Push "g"
+GetMember
+Push 0.0
+Equals2
+loc037c:PushDuplicate
+Not
+If loc039d
+Pop
+Push "e"
+GetVariable
+Push "h"
+GetMember
+Push 0.0
+Equals2
+loc039d:PushDuplicate
+Not
+If loc03be
+Pop
+Push "e"
+GetVariable
+Push constant4
+GetMember
+Push 0.0
+Equals2
+loc03be:PushDuplicate
+Not
+If loc03db
+Pop
+Push constant5
+GetVariable
+Push constant6
+GetMember
+Push 1
+Equals2
+loc03db:PushDuplicate
+Not
+If loc03fd
+Pop
+Push "e"
+GetVariable
+Push constant9
+GetMember
+Push "e"
+GetVariable
+Push constant10
+GetMember
+Less2
+Not
+loc03fd:Not
+If loc0409
+GotoFrame 79
+Play
+loc0409:Jump loc04a9
+loc040e:Push true
+Push false
+Push false
+Push true
+loc0422:If loc047e
+ConstantPool "_root", "ll", "rr", "uu", "dd", "_parent", "f", "gg", "atkpress", "mp", "b_gt1", "dong", "keyBack", "鬼步1", "gotoAndPlay"
+loc047e:If loc0490
+ConstantPool "e", "f", "g", "h"
+loc0490:If loc04a4
+Push true
+Push false
+Jump loc0422
+loc04a4:Jump loc0005
+loc04a9:

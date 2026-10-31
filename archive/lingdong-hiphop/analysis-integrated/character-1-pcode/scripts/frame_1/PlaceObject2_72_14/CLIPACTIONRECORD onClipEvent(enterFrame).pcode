@@ -1,0 +1,15 @@
+Push "_root"
+GetVariable
+Push "hp"
+GetMember
+Push 0.0
+Greater
+Not
+Not
+If loc0050
+Push "倒", 1, "_parent"
+GetVariable
+Push "gotoAndPlay"
+CallMethod
+Pop
+loc0050:

@@ -1,0 +1,63 @@
+Jump loc00f6
+loc0005:DefineFunction2 "swordLv", 0, 2, false, true, true, false, true, false, true, false, false {
+Push register1, "e"
+GetMember
+Push 0.0
+Equals2
+Not
+If loc003c
+GoToLabel "一级"
+loc003c:Push register1, "f"
+GetMember
+Push 1
+Equals2
+Not
+If loc005d
+GoToLabel "二级"
+loc005d:Push register1, "f"
+GetMember
+Push 2
+Equals2
+Not
+If loc007e
+GoToLabel "三级"
+loc007e:Push register1, "f"
+GetMember
+Push 3
+Equals2
+Not
+If loc009f
+GoToLabel "四级"
+loc009f:Push register1, "f"
+GetMember
+Push 4
+Equals2
+Not
+If loc00c0
+GoToLabel "五级"
+loc00c0:Push register1, "f"
+GetMember
+Push 5
+Equals2
+Not
+If loc00e1
+GoToLabel "六级"
+}
+loc00e1:Push 0.0, "g"
+CallFunction
+Pop
+Jump loc0153
+loc00f6:Push true
+Push false
+Push false
+Push true
+loc010a:If loc0128
+ConstantPool "sword", "sowrd", "swordLv"
+loc0128:If loc013a
+ConstantPool "e", "f", "g", "h"
+loc013a:If loc014e
+Push true
+Push false
+Jump loc010a
+loc014e:Jump loc0005
+loc0153:

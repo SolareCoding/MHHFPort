@@ -1,0 +1,53 @@
+Jump loc00d0
+loc0005:Stop
+Push "e", 0.0
+SetVariable
+Push "f", 0.0
+SetVariable
+Push "g", 0.0
+SetVariable
+Push "h"
+GetVariable
+Push constant4, 0.0
+SetMember
+Push "h"
+GetVariable
+Push constant5, 0.0
+SetMember
+Push constant6, false
+SetVariable
+Push constant7, false
+SetVariable
+Push constant8, 0.0
+SetVariable
+Push constant9, 0.0
+SetVariable
+Push "h"
+GetVariable
+Push constant10, 0.0
+SetMember
+Push "h"
+GetVariable
+Push constant11, 0.0
+SetMember
+Push "h"
+GetVariable
+Push constant12, false
+SetMember
+Push constant13, false
+SetVariable
+Jump loc016e
+loc00d0:Push true
+Push false
+Push false
+Push true
+loc00e4:If loc0143
+ConstantPool "walk", "hitting", "startJump", "_root", "dong", "jump2", "freeze", "fly", "atkS", "long", "lwalk", "rwalk", "superB", "take"
+loc0143:If loc0155
+ConstantPool "e", "f", "g", "h"
+loc0155:If loc0169
+Push true
+Push false
+Jump loc00e4
+loc0169:Jump loc0005
+loc016e:

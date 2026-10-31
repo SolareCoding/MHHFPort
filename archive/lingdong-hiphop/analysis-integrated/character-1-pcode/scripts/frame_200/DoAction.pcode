@@ -1,0 +1,38 @@
+Jump loc0058
+loc0005:Push 0.0, "e"
+CallFunction
+Pop
+Push 0.0, "f"
+GetVariable
+Push "g"
+GetMember
+Push "h"
+CallMethod
+Pop
+Push "f"
+GetVariable
+Push constant4, "f"
+GetVariable
+Push constant4
+GetMember
+Push "f"
+GetVariable
+Push constant5
+GetMember
+Subtract
+SetMember
+Jump loc00c3
+loc0058:Push true
+Push false
+Push false
+Push true
+loc006c:If loc0098
+ConstantPool "talk", "_root", "x_firex", "start", "mp", "b_gt2"
+loc0098:If loc00aa
+ConstantPool "e", "f", "g", "h"
+loc00aa:If loc00be
+Push true
+Push false
+Jump loc006c
+loc00be:Jump loc0005
+loc00c3:

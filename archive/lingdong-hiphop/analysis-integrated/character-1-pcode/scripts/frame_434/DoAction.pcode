@@ -1,0 +1,4 @@
+Push "take", true
+SetVariable
+Push "iiii", 3
+SetVariable

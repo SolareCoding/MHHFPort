@@ -1,0 +1,967 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+
+    <head>
+        <title>灵动嘻哈外传 原版 在线玩 | MHHF灵动游戏,好游戏在线玩！</title>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit">
+        <meta name="description" content="灵动游戏(www.mhhf.com)分享在线好游戏。" />
+        <meta name="keywords" content="MHHF,灵动官网,H5游戏,在线玩,原创游戏,独立游戏推荐,好游戏分享,耐玩的游戏,FLASH游戏中心" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <meta name="viewport" content="width=device-width,initial-scale=0.1,maximum-scale=10,user-scalable=yes">
+        <link type="text/css" href="https://www.mhhf.com/css/public.css?v=202211231126" rel="stylesheet" />
+        <link type="text/css" href="https://www.mhhf.com/css/global.css?v=202211231126" rel="stylesheet" />
+<!--        <script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.12.4.min.js"></script>-->
+        <script type="text/javascript" src="https://www.mhhf.com/lib/jquery-1.7.2.min.js?v=202211231126"></script>
+        <script type="text/javascript" src="https://www.mhhf.com/lib/jquery.cookie.min.js?v=202211231126"></script>
+        <script type="text/javascript" src="https://www.mhhf.com/lib/common.js?v=202211231126"></script>
+        <script type="text/javascript" src="https://www.mhhf.com/lib/login.js?v=202211231126"></script>
+        <script type="text/javascript" src="https://www.mhhf.com/lib/emoface.js?v=202211231126"></script>
+        <script type="text/javascript" src="https://www.mhhf.com/lib/qrcode.js?v=202211231126"></script>
+        <script type="text/javascript" src="https://www.mhhf.com/lib/tips.js?v=202211231126"></script>
+        <script type="text/javascript" src="https://www.mhhf.com/lib/originalc.js?v=202211231126"></script>
+        <script type="text/javascript" src="https://www.mhhf.com/lib/faceplate.js?v=202211231126"></script>
+        <script type="text/javascript" src="/res/auth"></script>
+        <link href="https://www.mhhf.com/img/favicon.ico?v=202211231126" rel="shortcut icon" />
+        <script type="text/javascript">
+            var toUserId = 0
+            var curUserData = {userId: -1, avatar: "", nickName: ""};
+            var errorData = {"30000": '未登录', "30001": '账号密码错误', "30002": '没有权限'};
+            var hide_memu_id;
+            $(function () {
+                $("#headspan,#user_menu").mouseover(function () {
+                    $("#user_menu").show();
+                    $("#msg_menu").hide();
+                    clearTimeout(hide_memu_id);
+                });
+                $("#headspan,#user_menu").mouseout(function () {
+                    hide_memu_id = setTimeout('$("#user_menu").hide();', 200);
+                });
+                $(".icon_bell,#msg_menu").mouseover(function () {
+                    $("#msg_menu").show();
+                    $("#user_menu").hide();
+                    clearTimeout(hide_memu_id);
+                });
+                $(".icon_bell,#msg_menu").mouseout(function () {
+                    hide_memu_id = setTimeout('$("#msg_menu").hide();', 200);
+                });
+                $("#userInfoDialog").mouseover(function () {
+                    $("#userInfoDialog").show();
+                    clearTimeout(hide_memu_id);
+                });
+                $("#userInfoDialog").mouseout(function () {
+                    hide_memu_id = setTimeout('$("#userInfoDialog").hide();', 200);
+                });
+                $("#alertMsg" + "" + " .emoji_face_gride_chat").each(function () {
+                    for (var i = emoji_codes["face"][0]; i <= emoji_codes["face"][1]; i++) {
+                        $(this).append("<span class='emoji_face_cell_20' data='" + unified2utf16(i) + "' style='" + unified2css(i, 20) + "'></span>");
+                    }
+
+                    var grid = $(this);
+                    $(this).find("span").click(function () {
+                        var tarea = grid.parent().prev().find("textarea");
+                        var pos = tarea[0].selectionStart;
+                        var head = tarea.val().substr(0, pos);
+                        var end = tarea.val().substr(pos);
+                        tarea.val(head + $(this).attr("data") + end);
+                        tarea.keyup();
+                    });
+                });
+                showUserInfo($("#avatarx").text().split(","));
+
+                retrieveUserMsg();
+            });
+        </script>
+        <!--百度统计-->
+        <script>
+            var _hmt = _hmt || [];
+            (function () {
+                var hm = document.createElement("script");
+                hm.src = "https://hm.baidu.com/hm.js?ffcdbf0f1d9675c0658d53bb6cbed391";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hm, s);
+            })();
+        </script>
+        <!--百度统计结束-->
+    </head>
+    <body>
+        <div id="header" class="width100 bg_header">
+            <div class="container rowwidth mauto">
+                <a class="logo left" href="/" target="_top"></a>
+                <div class="nav left">
+                    <ul>
+                        <li class="first ">
+                            <a href="/" target="_top" title="灵动首页">首页</a>
+                        </li>
+                        <li class="l active">
+                            <a href="/game" target="_top" title="游戏库">游戏</a>
+                        </li>
+                        <li class="l">
+                            <a href="/article/list" target="_blank" title="资讯中心">资讯</a>
+                        </li>
+<!--                        <li class="l" th:classappend="${module == 'gameh5' ? 'active' : ''}">-->
+<!--                            <a href="/game?format=2" target="_top" title="H5游戏">H5</a>-->
+<!--                        </li>-->
+                        <li class="l">
+                            <a href="/game?order=-4" target="_top" title="H5游戏">推荐</a>
+                        </li>
+<!--                        <li class="l" th:classappend="${module == 'pay' ? 'active' : ''}">-->
+<!--                            <a href="/pay" target="_top" title="充值中心">充值</a>-->
+<!--                        </li>-->
+                        <li class="l">
+                            <a href="/game/disclist" target="_top" title="发现">发现</a>
+                        </li>
+
+                        <li class="l last">
+                            <a href="/topics" target="_top" title="游戏专题">专题</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="user right">
+                    <div class="inline-b mtop9">
+                        <a href="/member/contribute/write/1" class=""><span class="default icon_up">投稿</span></a>
+                    </div>
+                    <span id="login_state01" style="display: none">
+                        <span class="default icon_user">
+                            <a href="/login" >登录</a> | <a href="/register">注册</a>
+                        </span>
+                    </span>
+                    <div id="avatarx" style="display: none">,,,,,,,,,,</div>
+                    <span id="login_state02" style="display: none">
+                        <a href="/member/msg" target="_top">
+                            <span class="default icon_bell"><span class="f5_msg_t_n"></span></span>
+                        </a>
+                        <span id="headspan">
+                            <a href="/member/home" target="_top">
+                                <img class="head" width="40" height="40" src="/img/user/headpic/58.jpg"/>
+                            </a>
+                        </span>
+                    </span>
+                    <ul id="msg_menu" class="menu mtop10" style="display:none">
+                        <li onclick="javascript:window.location.href='/member/msg'">系统<span class="f5_msg_p_n" ></span></li>
+                        <li onclick="javascript:window.location.href='/member/msg1'">通知<span class="f5_msg_n_n"></span></li>
+                        <li onclick="javascript:window.location.href='/member/msg2'">关注<span class="f5_msg_a_n"></span></li>
+                        <li onclick="javascript:window.location.href='/member/msg3'">私信<span class="f5_msg_o_n"></span></li>
+                        <hr />
+                        <li onclick="javascript:window.location.href='/member/setting'">消息设置</li>
+                    </ul>
+                    <ul id="user_menu" class="menu mtop10" style="display:none">
+                        <li class="f5_uname" onclick="javascript:window.location.href='/member/home'">
+                            <span></span>
+                            <img src="/img/m_flag_s.png" class="mflagimg" style="display: none"/>
+                        </li>
+                        <hr />
+                        <li class="icon icon_ucenter_mini" onclick="javascript:window.location.href='/member/home'">个人中心</li>
+                        <li class="icon icon_history_mini" onclick="javascript:window.location.href='/member/history'">历史记录</li>
+                        <li class="icon icon_fav_mini" onclick="javascript:window.location.href='/member/favorite'">我的收藏</li>
+<!--                        <li class="icon icon_pay_mini" onclick="javascript:window.location.href='/pay'">充值中心</li>-->
+                        <hr />
+                        <li class="icon icon_logout_mini" onclick="javascript:window.location.href='/member/logout?url='+window.location.href">退出</li>
+                    </ul>
+                </div>
+                <div class="search right">
+                    <form action="/find/1">
+                        <input name="k" type="text" class="keywords" placeholder="找游戏..." maxlength="50">
+                        <div class="search_tip" style="display:none;">
+                            <ul>
+                                <li>tip_1</li>
+                                <li>tip_2</li>
+                                <li>...</li>
+                            </ul>
+                            <a>关闭</a>
+                        </div>
+                        <input name="" value=""  type="submit" class="gotosearch" onclick="do_search()" />
+                    </form>
+                </div>
+                <div id="float_warn" style="display:none;position:absolute;z-index:99999;"><div class="alert_warning">帐号格式有误</div><iframe id="menu_cover" frameborder="0"></iframe></div>
+                <div id="float_tip" style="display:none;position:absolute;z-index:99999;"><div class="alert_tip">操作提示<iframe id="menu_cover" frameborder="0"></iframe></div></div>
+                <div class="_idialog send_msg" style="display:none;" id="alertMsg">
+                    <div class="title">私信<span class="close" onclick="hidesendMsg()"></span></div>
+                    <div class="content">
+                        <p>发送给：<span class="name" id="seneName">xxx</span></p>
+                        <br />
+                        <div class="recomm" onrecomm="reload_comment();" style="display: block;">
+                            <textarea placeholder="输入发信内容" id="msgComment" class="textarea_y"></textarea>
+                        </div>
+                        <div class="mtop10">
+<!--                            <span class="icon_recomm_face ssbq" style="cursor: pointer;" onmouseover="$('div.emoji_face_grid2').show()" onmouseout="$('div.emoji_face_grid2').hide()">表情</span>-->
+<!--                            <span class="icon_recomm_face" style="cursor: pointer;" onmouseover="$('div.emoji_face_grid2').show()" onmouseout="$('div.emoji_face_grid2').hide()">表情</span>-->
+<!--                            <div class="emoji_face_grid" style="display:none" onmouseover="$('div.emoji_face_grid2').show()" onmouseout="$('div.emoji_face_grid2').hide()">-->
+                            <span class="icon_recomm_face ssbq" style="cursor: pointer;" onmouseover="$('div.emoji_face_gride_chat').show()" onmouseout="$('div.emoji_face_gride_chat').hide()">表情</span>
+                            <div class="emoji_face_grid emoji_face_gride_chat" style="display:none" onmouseover="$('div.emoji_face_gride_chat').show()" onmouseout="$('div.emoji_face_gride_chat').hide()"></div>
+                            <span class="ssend"  onclick="saveMsg(0, 0, $('#msgComment').val(),'sendMsg')" id="sendMsg">发送</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="_idialog userinfo" id = "userInfoDialog" style="display:none;">
+                    <p class="wait" style="display:none;" >加载中请稍后...</p>
+                    <div class="tempcon">
+                        <div class="user_base_info">
+                            <div class="info">
+                                <img id="alertHeadPic" src="http://www.mhhf.com/user-headimg/09.jpg">
+                                <span class="infor">
+                                    <p class="name muser" title=""><span id="alertUserName"></span><i>（UID:<em id="alertUserId"></em>）</i></p>
+                                    <img src="/img/m_flag_s.png" class="mflagimg" style="display: none" id="mflag"/>
+                                    <p class="nums">
+                                        <span><i id="articleNums">0</i><br>投稿</span>
+                                        <span><i id="linkNums">0</i><br>获赞</span>
+                                        <span><i id="fansNums">0</i><br>粉丝</span>
+                                        <span><i id="attNums">0</i><br>关注</span>
+                                    </p>
+                                </span>
+                            </div>
+                            <div class="ops">
+                                <a href="javascript:void(0)" id="myhomepage" target="_blank"><span class="gohishomepage">TA的主页</span></a>
+                                <a onclick="addattention(this)" id="alertAttention" href="javascript:void(0);"><span id="attentionStyle" class="attention att_false"></span></a>
+                                <a onclick="sendMsg()"><span>发私信</span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="_idialog floatlogin"  id="login_dialog" style="display:none">
+                    <div class="title"><span class="text icon_user">请先登录灵动</span><span class="close" onclick="return hidelogindialog()"></span></div>
+                    <div class="content">
+                        <input type="hidden" id="floatlogin" value="0">
+                        <div class="loginleft" >
+                            <div class="input name mauto"><input id="username" name="name" max="20" placeholder="请输入您的用户名" type="text"></div>
+                            <div class="input pass mauto mtop10"><input id="userpwd" name="pass" max="20" placeholder="密码" type="password"></div>
+                            <div id="loginmask" class="input pass mauto mtop20" style="border: none;display: none;">
+                                <input name="mask" max="20" placeholder="验证码" style="width: 40%;" type="password">
+                                <img class="hmask_code" src="">
+                            </div>
+                            <div class="btn submit mauto mtop10"><input id="ajaxLogin" name="submit" onclick="ajaxLogin()" value="立即登录" type="button"></div>
+                            <div class="left mauto mtop10"><label title="一个月内自动登录"><input name="autologin" type="checkbox"> 下次自动登录</label></div>
+                            <div class="right mauto mtop10">
+                                <a href="/findpass" class="alink">忘记密码</a> |  <a href="/register" class="alink" id="loginresult">注册账号</a>
+                            </div>
+                        </div>
+                        <div class="loginleft">
+                            <div>其他登录方式：</div>
+                            <div class="mtop10"><a class="btn1 icon_qq" href="/oauth/render/qq">QQ账号登录</a></div>
+                            <div class="mtop10"><a class="btn1 icon_weixin" href="/oauth/render/wx">微信账号登录</a></div>
+                        </div>
+                    </div>
+                </div>
+                <!--安全提示-->
+                <div class="idialogshadow" id="idialogshadow" style="display:none"></div>
+                <div  class="_idialog safetytips" id="safetytips" style="display:none">
+                    <div class="authtitle">安全提示</div>
+                    <div class="authtext">
+                        <p>帐号：<span id="user_name">
+                            </span></p>
+                        <p>您的账号还未绑定邮箱</p>
+                        <p>无法进行密码找回，请尽快绑定邮箱！</p>
+                    </div>
+                    <div class="bindbtnbox">
+                        <div class="gobindemail">
+                            <a href="/member/security/email" target="_blank">去绑定</a>
+                        </div>
+                        <div class="huluebtn" onclick="hideSafetyTips()">忽略</div>
+                    </div>
+                </div>
+
+                <!--举报违规 -->
+                <div class="rpdialogshadow" id="rpdialogshadow" style="display:none"></div>
+                <div  class="_idialog reportbox" id="reportbox" style="display:none">
+                    <div class="fbtitle"><span class="text">举报违规</span><span class="close" onclick="hideComplaintBox()"></span></div>
+                    <div class="fbcontent" id="fbcontent_ts">
+                        <div class="fbitemt">用户<span id="complainter">咸鱼之王</span>涉嫌违规</div>
+                        <div class="fbitem">
+                            <label for="jbitemradio1"><input name="fbitem" class="fbitemradio" id="jbitemradio1" type="radio" checked="checked"  value="1"><span class="radiobehind">广告、外挂及欺诈信息。</span></label>
+                        </div>
+                        <div class="fbitem">
+                            <label for="jbitemradio2"><input name="fbitem" class="fbitemradio" id="jbitemradio2" type="radio"  value="2"><span class="radiobehind">不雅词句、人身攻击、故意骚扰及恶意内容。</span></label>
+                        </div>
+                        <div class="fbitem">
+                            <label for="jbitemradio3"><input name="fbitem" class="fbitemradio" id="jbitemradio3" type="radio" value="3"><span class="radiobehind">激进、宗教、政治、反动等内容。</span></label>
+                        </div>
+                    </div>
+                    <div class="jbboxbtn">
+                        <div id="fbbtnsubmit_ts" class="fbbtnsubmit" onclick="saveComplaint()">确定</div>
+                        <div class="fbcancel" onclick="hideComplaintBox()">取消</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <a href="/member/security/email" target="_blank"  id="userEmail" style="display: none">
+            <p id="acc_bind_tip" >注意：您的账号还未绑定邮箱，为了您的账号安全，请尽快点这里进行设置！</p>
+        </a>
+        <!--中间content-->
+        <div>
+        <link type="text/css" href="https://www.mhhf.com/css/game.css?v=202211231126" rel="stylesheet" />
+        <link type="text/css" href="https://www.mhhf.com/css/video.css?v=202211231126" rel="stylesheet" />
+        <link type="text/css" href="https://www.mhhf.com/css/comment.css?v=202211231126" rel="stylesheet" />
+        <link type="text/css" href="https://www.mhhf.com/css/page.css?v=202211231126" rel="stylesheet" />
+        <script type="text/javascript" src="https://www.mhhf.com/lib/game.js?v=202211231126"></script>
+        <script type="text/javascript">
+            var toUserId = 0
+            $(function () {
+                $("body").addClass("bg_article");
+                $(window).scroll(function () {
+                    if ($(window).scrollTop() >= 500) {
+                        $("#rightNav").show();
+                    } else {
+                        $("#rightNav").hide();
+                    }
+                });
+                $(".fbcontent .fbitem label").click(function () {
+                    var index = $(this).parent().index();
+                    if(index == 0){
+                        $("#feedbackurl").hide();
+                        $("#feedbackintro").hide();
+                    }else if(index == 1){
+                        $("#feedbackurl").show();
+                        $("#feedbackintro").hide();
+                    }else if(index == 3){
+                        $("#feedbackurl").hide();
+                        $("#feedbackintro").show();
+                    }
+                });
+                $("#gotop").click(function () {
+                    $('html').animate({
+                        scrollTop: '0'
+                    }, 300);
+                });
+
+                $(".ac li a").click(function () {
+                    var obj = $(this).parents('li').addClass('active').siblings().removeClass('active');
+                });
+            })
+            function showFacegrid() {
+                $(".face_grid").show();
+            }
+            function hideFacegrid() {
+                $(".face_grid").hide();
+            }
+            function showFaceDialog() {
+                $("#emoji_face_grid").show();
+            }
+            function hideFaceDialog() {
+                $("#emoji_face_grid").hide();
+            }
+            function showReply(id) {
+                $("#reply" + id).toggle();
+            }
+            function hideReply(id) {
+                $("#reply" + id).hide();
+            }
+
+        </script>
+        <div>
+        <script type="text/javascript" src="https://www.mhhf.com/lib/games.js?v=202211231126"></script>
+        <script type="text/javascript" src="https://www.mhhf.com/lib/checkFlash.js?v=202211231126"></script>
+        <script type="text/javascript" src="https://www.mhhf.com/lib/declare.js?v=202211231126"></script>
+        <script type="text/javascript" src="https://www.mhhf.com/lib/audio.min.js?v=202211231126"></script>
+        <script type="text/javascript" src="https://www.mhhf.com/lib/jquery.min.1.8.js?v=202211231126"></script>
+        <script type="text/javascript" src="https://www.mhhf.com/lib/jquery-ui-1.10.4.custom.min.js?v=202211231126"></script>
+        <script type="text/javascript" src="https://www.mhhf.com/lib/md5.js?v=202211231126"></script>
+        <script type="text/javascript" src="https://www.mhhf.com/lib/jquery.cookie.min.js?v=202211231126"></script>
+        <script type="text/javascript">
+            var commendVal = '9.6';
+            var disName = '灵动嘻哈外传 原版';
+            var gameId = 208;
+            var tags = '101|横版Θ125|风格化Θ109|国风Θ75|闯关Θ94|升级Θ147|单色';
+            var attValue = '9.6';
+            var hits = '76606';
+            var supportNums = '111';
+            var isFavorite = 0;
+            var gradeRecord = 0;
+            // var userId = ;
+            var developer = '灵动游戏'==""?'灵动游戏':'灵动游戏';
+            var expData3 = "";
+            var gameUrl = '';
+            var openid = "";
+            var complaintResId = 0;
+            $(function () {
+                window.common_start_time = new Date();
+                // reloadState(document.referrer);
+                if (typeof window.addEventListener === "function") {
+                    window.addEventListener('message', function (e) {
+                        var info = JSON.parse(e.data);
+                        switch (info.act) {
+                            case 'show_f_pay':
+                                show_f_pay(info.gid, info.sid, info.amt, info.extra);
+                                break;
+                        }
+                    }, false);
+                }
+                star(gradeRecord)
+                if(isFavorite==0){
+                    $("#addfav").show();
+                    $("#delfav").hide();
+                } else {
+                    $("#addfav").hide();
+                    $("#delfav").show();
+                }
+                showSafeAuth();
+            })
+        </script>
+        <div id="mainrow" class="bg_game pdtop10 pdbottom10">
+            <div id="game_play" class="mauto">
+                <div class="title">
+                    <i>灵动嘻哈外传 原版</i>
+                    <span class="en"></span>
+                    <span class="mark_total"><span id="game_supportNums">111</span>人评价</span>
+                    <span class="mark_score" id="game_commendVal">9.6</span>
+                </div>
+            </div>
+            <div id="gamebox" class="prel">
+                <!--游戏放置区域开始-->
+                <div id="loadingbox">
+                    <div class="loading" id="loader1">
+                        <div class="logo"></div>
+                        <div class="progressbarbg">
+                            <div id="progressbar"></div>
+                        </div>
+                        <div class="percent" id="percentstr"></div>
+                        <div id="txtshow" class="texts"></div>
+                    </div>
+                </div>
+                <div class="loadingScreen" id="ngRuffleLoadingScreen" style="display:none">
+
+                    <div>
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none" width="328" height="108"><defs><g id="a"><path fill="#966214" d="M37.85 61.25q-.4 0-.8.05-.5-.25-.9-.5-.3-.1-.55-.3l-.6-.6-4.25-6.45-1.5 11.25h3.45q.75-.1 1.5-.35.85-.25 1.65-.75.55-.35 1.05-.8.5-.45.95-1 .5-.5.75-1.2-.05.05-.15.1-.1.15-.25.25l-.1.2q-.15.05-.25.1m58.3 0q-.9 0-1.45-.7-.3-.3-.55-.6l-.05-.05v-.05l-4.25-6.4-1.5 11.25h3.45q.75-.1 1.5-.35.85-.25 1.6-.75.75-.5 1.4-1.1.45-.35.75-.85.35-.5.65-1.05l-.45.55q-.5.15-1.1.1m19.7 3.25h3.45q.75-.1 1.5-.35.25-.05.45-.15.35-.15.65-.3l.5-.3q.25-.15.5-.35.45-.35.9-.75.45-.35.75-.85l.1-.1q.1-.2.2-.35.2-.3.35-.6l-.3.4-.15.15q-.5.15-1.1.1-.25 0-.4-.05-.5-.15-.8-.4-.15-.1-.25-.25-.3-.3-.55-.6l-.05-.05v-.05l-4.25-6.4-1.5 11.25m52.6.2q-3.1-.25-5.7-.75-5.6-1.05-8.9-3.1-.75-.5-1.4-1-3.15-2.55-3.5-6.4l-1.5 11.25h21m33.4-5.65q-2.3-2.35-2.6-5.6l-1.5 11.25h21q-11.25-.95-16-4.85-.5-.4-.9-.8m55.15 2.5q-2.55-.25-3.25-1.8l-4.2-6.3-1.5 11.25h3.45q.6-.1 1.2-.3.4-.1.75-.2.35-.15.65-.3.7-.35 1.35-.8.75-.55 1.3-1.25.1-.15.25-.3m23.95-8.05l-1.5 11.2h21q-.3-.05-.6-.05-10.8-1-15.4-4.8-3.15-2.55-3.5-6.35z"/><path fill="#FFAD33" d="M40.65 47.25H51.8L49.75 61.7h16.5l2.3-16.25h-.05l.8-5.7q.4-2.45-1-4.2-.35-.4-.75-.8-.25-.25-.55-.5-.2-.2-.45-.35-1.95-1.4-4.5-1.4H34.3q-1.35 0-2.6.45-1.65.55-3.15 1.8Q25.8 37 25.3 40l-1.65 12h.05v.3l5.85 1.15h-9.5q-.5.05-1 .15-.5.15-1 .35-.5.2-.95.45-.5.3-.95.7-.45.35-.85.8-.35.4-.65.85-.3.45-.5.9-.15.45-.3.95L8 100.2h16.25l5-35.5 1.5-11.25L35 59.9l.6.6q.25.2.55.3.4.25.9.5.4-.05.8-.05.1-.05.25-.1l.1-.2q.15-.1.25-.25.1-.05.15-.1l.3-1.05 1.75-12.3m86.8-2h-.05l.15-1.25h-.05l1.65-11.7H112.9l-2.65 19.5h.05v.2l-.05.1h.05l5.8 1.15h-9.45q-.5.05-1 .15-.5.15-1 .35-.15.05-.3.15-.3.1-.55.25-.05 0-.1.05-.5.3-1 .65-.4.35-.7.7-.55.7-.95 1.45-.35.65-.55 1.4-.15.7-.25 1.4v.05q-.15 1.05-.35 2.05l-1.2 8.75v.1l-2.1 14.7H85.35L87.6 69.9h.05l.7-5.2 1.5-11.25 4.25 6.4v.05l.05.05q.25.3.55.6.55.7 1.45.7.6.05 1.1-.1l.45-.55.3-1.05 1.3-9.05h-.05l.7-5.05h-.05l.15-1.25H100l1.65-11.7H85.4L82.75 52h.05l-.05.3 5.85 1.15h-9.45q-.5.05-1 .15-.5.15-1 .35-.5.2-.95.45-.5.3-1 .65-.4.4-.8.85-.25.3-.55.65-.05.1-.15.2-.25.45-.4.9-.2.45-.3.95-.1.65-.2 1.25-.2 1.15-.4 2.25l-4.3 30.6q-.25 3 1.75 5.25 1.6 1.8 4 2.15.6.1 1.25.1h27.35q3.25 0 6-2.25.35-.35.7-.55l.3-.2q2-2 2.25-4.5l1.65-11.6q.05-.05.1-.05l1.65-11.35h.05l.7-5.2 1.5-11.25 4.25 6.4v.05l.05.05q.25.3.55.6.1.15.25.25.3.25.8.4.15.05.4.05.6.05 1.1-.1l.15-.15.3-.4.3-1.05 1.3-9.05h-.05l.7-5.05m61.8-35Q187 8 183.75 8H156q-3 0-5.75 2.25-1.3.95-2.05 2.1-.45.6-.7 1.2-.2.5-.35 1-.1.45-.15.95l-4.15 29.95h-.05l-.7 5.2h-.05l-.2 1.35h.05l-.05.3 5.85 1.15h-9.45q-2.1.05-3.95 1.6-1.9 1.55-2.25 3.55l-.5 3.5h-.05l-5.3 38.1h16.25l5-35.5 1.5-11.25q.35 3.85 3.5 6.4.65.5 1.4 1 3.3 2.05 8.9 3.1 2.6.5 5.7.75l1.75-11.25H158l.4-2.95h-.05l.7-5.05H159q.1-.9.3-1.9.1-.75.2-1.6.85-5.9 2.15-14.9 0-.15.05-.25l.1-.9q.2-1.55.45-3.15h11.25l-3.1 20.8h16.5L191 15.5q.15-1.7-.4-3.15-.5-1.1-1.35-2.1m50.3 0Q237.3 8 234.05 8H206.3q-2.3 0-4.45 1.35-.65.35-1.3.9-1.3.95-2.05 2.1-.45.6-.7 1.2-.4.9-.5 1.95l-4.15 29.95h-.05l-.7 5.2h-.05l-.2 1.35h.05l-.05.3 5.85 1.15h-9.45q-2.1.05-3.95 1.6-1.9 1.55-2.25 3.55l-.5 3.5h-.05l-1.2 8.75v.1l-4.1 29.25h16.25l5-35.5 1.5-11.25q.3 3.25 2.6 5.6.4.4.9.8 4.75 3.9 16 4.85l1.75-11.25h-12.2l.4-2.95h-.05l.7-5.05h-.05q.15-.9.3-1.9.1-.75.25-1.6.15-1.25.35-2.65v-.05q.95-6.7 2.35-16.5h11.25l-3.1 20.8h16.5l4.1-28.05q.15-1.7-.4-3.15-.5-1.1-1.35-2.1M259.5 45.5v-.05L264.85 8H248.6l-6.15 44.3 5.85 1.15h-9.45q-.5.05-1 .15-.5.15-1 .35-.5.2-.95.45-.5.3-1 .65-.4.4-.8.85-.35.4-.7.85-.25.45-.45.9-.15.45-.3.95l-5.85 41.6h16.25l5-35.5 1.5-11.25 4.2 6.3q.7 1.55 3.25 1.8l.05-.1q.25-.4.35-.85l.3-1.05 1.8-14.05m25.6-15.75q-.65 0-1.3.1-2.5.35-4.7 2.15-2.75 2.25-3.25 5.25l-1.95 14.7V52l-.05.3 5.85 1.15h-9.45q-1.9.05-3.6 1.35-.2.1-.35.25-1.9 1.55-2.25 3.55l-4.85 34.1q-.25 3 1.75 5.25 1.25 1.4 3 1.95 1.05.3 2.25.3h27.75q3.25 0 6-2.25 2.75-2 3.25-5l2.75-18.5h-16.5l-1.75 11h-11.25l2.1-14.75h.05l.85-6 1.5-11.2q.35 3.8 3.5 6.35 4.6 3.8 15.4 4.8.3 0 .6.05h15.75l2.75-19.25h-.05l1.15-8.2q.5-3-1.75-5.25-1.25-1.25-3-1.75-1-.5-2.25-.5H285.1m5.95 15.7h-.1l.15-.95h11.45l-1.25 8.95H290l.4-2.95h-.05l.7-5.05z"/></g></defs><use xlink:href="#a"/></svg>
+
+                        <div id="ngRuffleProcessing" class="ngRuffleLoadContainer" style="display:none">
+                            <span id="loadSpinner"></span>
+                            Processing SWF...
+                        </div>
+
+                        <div id="ngRuffleLoadbar" class="ngRuffleLoadContainer">
+                            <div class="ngRuffleLoadbarOuter">
+                                <div class="ngRuffleLoadbarInner" id="ngRuffleLoadbarInner">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <div class="flashview" id="flashview"></div>
+                <!--游戏放置区域结束-->
+            </div>
+            <div id="openid"></div>
+            <div id="game_play" class="mauto">
+                <div class="other">
+                    <div class="share">
+                        分享到：
+                        <a href="http://service.weibo.com/share/share.php?appkey=&amp;title=灵动嘻哈外传 原版&amp;url=https://www.mhhf.com/game/detail/208&amp;pic=https://www.mhhf.com/files/game/208/4687009949406.jpg" title="分享到新浪微博" target="_blank" class="share_ico s_sina hideword">新浪微博</a>
+                        <a href="https://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=https://www.mhhf.com/game/detail/208&amp;site=%E7%81%B5%E5%8A%A8%E5%8E%9F%E5%88%9B%E6%B8%B8%E6%88%8F%EF%BC%88MHHF.COM%EF%BC%89&amp;title=灵动嘻哈外传 原版&amp;pics=https://www.mhhf.com/files/game/208/4687009949406.jpg&amp;desc=&amp;summary=" title="分享到QQ空间" target="_blank" class="share_ico s_qzone hideword">QQ空间</a>
+                        <a href="https://connect.qq.com/widget/shareqq/index.html?url=https://www.mhhf.com/game/detail/208&amp;site=%E7%81%B5%E5%8A%A8%E5%8E%9F%E5%88%9B%E6%B8%B8%E6%88%8F%EF%BC%88MHHF.COM%EF%BC%89&amp;title=灵动嘻哈外传 原版&amp;pics=https://www.mhhf.com/files/game/208/4687009949406.jpg&amp;desc=&amp;summary=" title="分享到QQ好友" target="_blank" class="share_ico s_qq hideword">QQ</a>
+                    </div>
+                    <div class="myassess">
+                        <span>我的评价：</span>
+                        
+                            <div class="starmark change" gid="208"><span style="width:0%;"></span></div><span>很差</span>
+                        
+                        <!--登录后-->
+                        
+                    </div>
+                    <div class="operating">
+                        <a href="javascript:void(0)" class="ico_rplay refreshplay">重玩</a>
+                        <a href="javascript:void(0)" class="ico_tobig tobigger">放大</a>
+                        <a href="javascript:void(0)" class="ico_tosmall tosmaller">缩小</a>
+                        <a href="javascript:void(0)" class="ico_todefault toreturned">原大</a>
+                        <a href="javascript:void(0)" class="ico_towindowfull fullwindowsplay">全屏</a>
+                        
+                        <span class="gotofav">
+                            <a href="javascript:void(0);" class="ico_tofav" id="addfav" style="display:inline-block" onclick="return addFavorite(1,2)">我要收藏</a>
+                            <a href="javascript:void(0);" class="canceltofav" id="delfav" style="display: none" onclick="return addFavorite(0,2)">取消收藏</a>
+                        </span>
+                        <a href="javascript:void(0);" class="gamefeedback" onclick="showFeedbackBox()">游戏反馈</a>
+                        
+                        <a href="/game/play/208?format=11"  class="ruffle_play"></a>
+                    </div>
+
+                </div>
+                <div class="clear"></div>
+            </div>
+        </div>
+        <div id="turnedOffshadow" class="hide"></div>
+        <div id="CloseFullbox" class="flashfullwindows" title="退出全屏"></div>
+        
+        
+            <script>
+                gameUrl = '/files/game/208/25b.swf';
+            </script>
+        
+        
+        
+        <script>
+            //游戏配置
+            var setting = "";
+            setting = setting ? JSON.parse(escape2Html(setting)) : null;
+            var fls = flashChecker();
+            var testdiv = document.getElementById("txtshow");
+            testdiv.innerHTML='正在载入游戏，请稍后...';
+            document.getElementById('flashview').style.visibility = 'hidden';
+            var is_iframe = gameUrl.indexOf(".swf") < 0;
+            if (is_iframe) {
+                $(".flashview").html(__Game.loadiframe(gameUrl, 400, 300, 400, "450",setting));
+                $("#loadingbox").hide();
+                document.getElementById('flashview').style.visibility = 'visible'
+                if (300 == 0) {
+                    $(window).scrollTop($("#flashview").offset().top);
+                }
+            } else {
+                $(".flashview").html(__Game.loadswf(gameUrl,400, 300, 400, "450",setting));
+                if (fls.f) {
+                    __Game.Waiting($("#percentstr"), $("#progressbar"), function () {
+                        $("#loadingbox").hide();
+                        document.getElementById('flashview').style.visibility = 'visible';
+                    });
+                } else {
+                    testdiv.innerHTML='<a href="http://www.adobe.com/go/getflashplayer" id="start_flash" rel="nofollow" target="_blank" class="flash-btn">点击运行FLASH</a>';
+                    testdiv.innerHTML+=escape2Html("&lt;br /&gt;&lt;span style=&quot;color: #f1c40f; font-size: 14px;&quot;&gt;当前浏览器不支持FLASH，点击后如无法正常进入游戏：&lt;/span&gt;&lt;br /&gt;&lt;span style=&quot;color: #c9b270; font-size: 14px;&quot;&gt;1. &lt;a style=&quot;color: #c9b270;&quot; href=&quot;https://www.mhhf.com/tools/360se+5000577+n761579be99.exe&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;[ 尝试使用360浏览器，开启极速模式 ]&lt;/a&gt;&lt;/span&gt;&lt;br /&gt;&lt;span style=&quot;color: #c9b270; font-size: 14px;&quot;&gt;2. &lt;a style=&quot;color: #c9b270;&quot; href=&quot;https://www.mhhf.com/tools/sogou_explorer_11.0.0.33862_7793.exe&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;[ 尝试使用搜狗浏览器，开启高速模式 ]&lt;/a&gt;&lt;/span&gt;&lt;br /&gt;&lt;span style=&quot;color: #c9b270; font-size: 14px;&quot;&gt;3. &lt;a style=&quot;color: #c9b270;&quot; href=&quot;https://www.flash.cn/cdm/latest/flashplayerpp_install_cn.exe&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;[ 安装FLASH中国版插件（广告较多） ]&lt;/a&gt;&lt;/span&gt;");
+                }
+            }
+
+            $(function () {
+                if (!is_iframe) {
+                    $('.refreshplay').click(function () {
+                        var strMovieUrl;
+                        if (__Game.getFlashObjectEmbed('embedFlashObject') == 0) {
+                            strMovieUrl = document.getElementById("flashObject").movie;
+                            document.getElementById("flashObject").movie = " ";
+                            document.getElementById("flashObject").movie = strMovieUrl;
+                        } else {
+                            //兼容google chrome浏览器的重新玩游戏
+                            $('.flashview').html($('.flashview').html());
+                        }
+                    });
+                    $('.fullwindowsplay').click(function () {
+                        __Game.fullwindow();
+                    });
+                    $('.flashfullwindows').click(function () {
+                        __Game.fullwindow();
+                    });
+                    $('.tosmaller').click(function () {
+                        __Game.smaller();
+                    });
+                    $('.tobigger').click(function () {
+                        __Game.bigger();
+                    });
+                    $('.toreturned').click(function () {
+                        __Game.returned();
+                    });
+                } else {
+                    // $('.toreturned,.tobigger,.tosmaller,.flashfullwindows,.fullwindowsplay,.refreshplay').addClass("disabled");
+                    $('.toreturned,.tobigger,.tosmaller,.flashfullwindows,.refreshplay').addClass("disabled");
+
+                    $('.fullwindowsplay').click(function () {
+                        var ifo = document.getElementById("iframeObject").contentWindow.document;
+
+                        if (null != ifo.getElementById("unity-canvas") && ifo.getElementById("unity-canvas") != undefined)
+                            openFullscreen(ifo.getElementById("unity-canvas"));
+                        else if (null != ifo.getElementById("game-frame") && ifo.getElementById("game-frame") != undefined)
+                            openFullscreen(ifo.getElementById("game-frame"));
+                        else if (null != ifo.getElementById("canvas") && ifo.getElementById("canvas") != undefined)
+                            openFullscreen(ifo.getElementById("canvas"));
+                        else if (null != ifo.getElementById("startMenu") && ifo.getElementById("startMenu") != undefined)
+                            openFullscreen(ifo.getElementById("startMenu"));
+                        else {
+                            var cav = ifo.getElementsByTagName("canvas");
+                            if (null != cav && cav != undefined && cav.length > 0)
+                                openFullscreen(cav[0]);
+                            else {
+                                var dv = ifo.getElementsByTagName("div");
+                                if (null != dv && dv != undefined && dv.length > 0){
+                                    openFullscreen(dv[0]);
+                                }
+                            }
+                        }
+
+
+                    });
+
+
+                    $('.flashfullwindows').click(function () {
+                        // __Game.fullwindow();
+                        // player.exitFullscreen();
+                    });
+                }
+            });
+
+            if(openid) {
+                $('#openid').text('您在灵动平台的OPENID：'+openid)
+            }
+            $('#setting_script').remove();
+        </script>
+        
+        <style type="text/css">
+            #login_dialog .title .close { display:none}
+        </style>
+        <!--安全认证防沉迷-->
+        <!--防沉迷提示-->
+<div xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+    <!--防沉迷提示-->
+    <div  class="_idialog authtips" id="authtips" style="display:none">
+        <div><div class="authtitle"><span style="color: #f1c40f;">防沉迷提示</span></div>
+<div class="authtext">
+<p><span style="font-size: 16px;">根据未成年人防沉迷规定，您需要登录后才能继续游戏。<br />注：未成年人（18岁以下）无法进行游戏。</span></p>
+</div></div>
+        <div class="authgologin" onclick="show_ff_login()">立即登录</div>
+    </div>
+    <!--实名认证-->
+    <div  class="_idialog authdialog" id="authdialog" style="display:none">
+        <div class="authtitle">实名认证</div>
+        <div class="authtext1">根据防沉迷相关要求，您的帐号需要通过实名认证</div>
+        <div class="authbox">
+            <div class="authitem">
+                <div class="authitemleft">真实姓名</div>
+                <div class="authitemright">
+                    <input class="input_y" name="realname" />
+                </div>
+            </div>
+            <div class="authitem">
+                <div class="authitemleft">身份证号</div>
+                <div class="authitemright">
+                    <input class="input_y" name="idcard"/>
+                </div>
+            </div>
+        </div>
+        <div class="authnow" onclick="idCardAuth()" id="idCardAuth">立即认证</div>
+    </div>
+</div>
+    </div>
+        
+        
+        
+        
+        
+        <div class="mauto adv gameadvbox">
+            <a href="https://m.heitu.com/wxapi/wxlogin/unid/mhhfzy/gid/5776.html" target="_blank">
+                <img class="advimg"  src="https://www.mhhf.com/files/adv/2025-11/91747760970.jpg" style="width: 1160px; height: 96px;" alt="《西游除妖》- 放置挂机" title="《西游除妖》- 放置挂机">
+            </a>
+        </div>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <div class="centerbody">
+            <div class="leftbig">
+                <div class="pagebox mtop10" id="gameinfosmall">
+                    <header>
+                        <div>灵动嘻哈外传 原版</div>
+                    </header>
+                    <header class="sub">
+                        <span>出品：灵动游戏</span>
+                        <span>热度：<span class="hint" id="game_hits">76606</span></span>
+                        <span>评论：<span class="hint" id="game_commentNums">272</span></span>
+                        <span>大小：29502</span>
+                        <span class="last">更新：2008-03-27 02:43:26</span>
+                        <br>
+                        <span class="last">分类：
+                            <a style="margin-right:10px; color:#B4B4B4" target="_blank" href="/game?type=2">动作</a>
+                            <a style="margin-right:10px; color:#B4B4B4" title="横版" target="_blank"
+                               href="/game?tags=横版">横版</a><a style="margin-right:10px; color:#B4B4B4" title="风格化" target="_blank"
+                               href="/game?tags=风格化">风格化</a><a style="margin-right:10px; color:#B4B4B4" title="国风" target="_blank"
+                               href="/game?tags=国风">国风</a><a style="margin-right:10px; color:#B4B4B4" title="闯关" target="_blank"
+                               href="/game?tags=闯关">闯关</a><a style="margin-right:10px; color:#B4B4B4" title="升级" target="_blank"
+                               href="/game?tags=升级">升级</a><a style="margin-right:10px; color:#B4B4B4" title="单色" target="_blank"
+                               href="/game?tags=单色">单色</a></span>
+                    </header>
+                    <div class="clear"></div>
+                    
+                    <section id="tabs-board-1" class="mtop10">
+                        <div>
+                            <h2>操作方法：</h2>
+                            <div><div>
+	WASD=控制角色移动，J=攻击，K=跳跃， J+K=损血技，I=暂停/菜单，搓招必杀见游戏说明。</div>
+</div>
+                        </div>
+                        <br>
+                        <div class="tarea">
+                            <h2>游戏介绍：</h2>
+                            <span>灵动组继灵动嘻哈势力2以后，最新开发的横版动作闯关游戏，玩家可以通过重复通关该游戏来收集稀有武器和首饰，耐玩性非常高！游戏中的一些隐藏要素就有待玩家自己去发掘了！<br />
+隐藏要素包括，隐藏武器，隐藏关卡等。</span><br>
+                        </div>
+                    </section>
+                </div>
+<!--                <div th:replace="game/declare::attitude"></div>-->
+<!--                <div class="clear"></div>-->
+                
+                <div class="clear"></div>
+            </div>
+
+            <div class="rightsmall">
+                <div class="pagebox mtop10">
+                    <div >
+                    <header>
+                         <div>TA推荐该游戏<a href="/homepage/2"  target="_blank" class="rbut">详细&gt;</a></div>
+                    </header>
+                        <div class="userbox mtop10">
+                            <img class="head user_float_tip" onmouseover="showUser(this)"  onmouseout="hideUser(this)"   width="45" height="45" data-id="2" src="/img/headimg/56.jpg">
+                            <div class="info" style="width:235px; overflow:hidden; height:45px">
+                                <p style=" height:19px; overflow:hidden; display:inline-block"><span title="" class="user_float_tip name" onmouseover="showUser(this)"  onmouseout="hideUser(this)"  data-id="2">灵翼</span><img  src="/img/m_flag_s.png" class="mflagimg"  title="灵动认证：
+网站服务员"/></p>
+                                <p class="fs12 mtop5"><span>2018-01-19 14:54:29</span>&nbsp;推送</p>
+                            </div>
+
+                        </div>
+                        <section class="lit mtop10">
+                            <div class="tarea">
+                                <pre>老夫的新作，画面风格使用了潦草的作画</pre>
+                            </div>
+                        </section>
+                    </div>
+                    <div class="zan_box">
+                        <a class="2admire but active"  id="gameuseradmire"  onclick="addadmire(this)" data-id="2" data-isalert="0" data-num="1316">赞</a>
+                        <span class="2admirenum num" >1316</span>
+                        <a class="2attention add "  onclick="addattention(this)" id="gameuseratt" data-id="2" data-isalert="0" ></a>
+                    </div>
+                </div>
+                <div class="pagebox mtop20 mbottom20">
+                    <header><div>相关推荐游戏</div></header>
+                    <section class="lit related_sec">
+                        <div class="related_cell">
+                            <a href="/game/detail/210" class="related_cella" target="_blank">
+                                <img src="https://www.mhhf.com/files/game/210/4687009944472.jpg" />
+                            </a>
+                            <div class="info">
+                                <a href="/game/detail/210" target="_blank">
+                                    <p class="title">灵动嘻哈外传 集成版</p>
+                                </a>
+                                <p class="t2">
+                                    <span>动作</span>
+                                    <span class="s">9.1</span>
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="related_cell">
+                            <a href="/game/detail/6238" class="related_cella" target="_blank">
+                                <img src="https://www.mhhf.com/files/game/6238/20067491099344.jpg" />
+                            </a>
+                            <div class="info">
+                                <a href="/game/detail/6238" target="_blank">
+                                    <p class="title">阿拉斯加格斗 汉化版</p>
+                                </a>
+                                <p class="t2">
+                                    <span>动作</span>
+                                    <span class="s">7.8</span>
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="related_cell">
+                            <a href="/game/detail/6225" class="related_cella" target="_blank">
+                                <img src="https://www.mhhf.com/files/game/6225/4687009949483.jpg" />
+                            </a>
+                            <div class="info">
+                                <a href="/game/detail/6225" target="_blank">
+                                    <p class="title">无头骑士</p>
+                                </a>
+                                <p class="t2">
+                                    <span>动作</span>
+                                    <span class="s">8.5</span>
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="related_cell">
+                            <a href="/game/detail/6221" class="related_cella" target="_blank">
+                                <img src="https://www.mhhf.com/files/game/6221/11461525152726.jpg" />
+                            </a>
+                            <div class="info">
+                                <a href="/game/detail/6221" target="_blank">
+                                    <p class="title">刀锋战机</p>
+                                </a>
+                                <p class="t2">
+                                    <span>动作</span>
+                                    <span class="s">8.6</span>
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="related_cell">
+                            <a href="/game/detail/5551" class="related_cella" target="_blank">
+                                <img src="https://www.mhhf.com/files/game/5551/4687009940365.jpg" />
+                            </a>
+                            <div class="info">
+                                <a href="/game/detail/5551" target="_blank">
+                                    <p class="title">摩登大圣-变相怪杰（SFC）</p>
+                                </a>
+                                <p class="t2">
+                                    <span>动作</span>
+                                    <span class="s">8.2</span>
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="related_cell">
+                            <a href="/game/detail/6159" class="related_cella" target="_blank">
+                                <img src="https://www.mhhf.com/files/game/6159/4687009948088.jpg" />
+                            </a>
+                            <div class="info">
+                                <a href="/game/detail/6159" target="_blank">
+                                    <p class="title">恶魔圈套</p>
+                                </a>
+                                <p class="t2">
+                                    <span>冒险</span>
+                                    <span class="s">7.7</span>
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="related_cell">
+                            <a href="/game/detail/5842" class="related_cella" target="_blank">
+                                <img src="https://www.mhhf.com/files/game/5842/365639913373.jpg" />
+                            </a>
+                            <div class="info">
+                                <a href="/game/detail/5842" target="_blank">
+                                    <p class="title">云端问仙</p>
+                                </a>
+                                <p class="t2">
+                                    <span>放置</span>
+                                    <span class="s">7.8</span>
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="related_cell">
+                            <a href="/game/detail/6223" class="related_cella" target="_blank">
+                                <img src="https://www.mhhf.com/files/game/6223/4687009945753.jpg" />
+                            </a>
+                            <div class="info">
+                                <a href="/game/detail/6223" target="_blank">
+                                    <p class="title">狂野赛车</p>
+                                </a>
+                                <p class="t2">
+                                    <span>体育</span>
+                                    <span class="s">7.6</span>
+
+                                </p>
+                            </div>
+                        </div>
+                        <div class="related_cell">
+                            <a href="/game/detail/6240" class="related_cella" target="_blank">
+                                <img src="https://www.mhhf.com/files/game/6240/4687009943780.jpg" />
+                            </a>
+                            <div class="info">
+                                <a href="/game/detail/6240" target="_blank">
+                                    <p class="title">不正经的卡牌传说 Demo</p>
+                                </a>
+                                <p class="t2">
+                                    <span>角色扮演</span>
+                                    <span class="s">8.3</span>
+
+                                </p>
+                            </div>
+                        </div>
+                        
+                    </section>
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!--游戏反馈-->
+        <div class="fbdialogshadow" id="tsdialogshadow" style="display:none"></div>
+        <div  class="_idialog feedbackbox" id="feedbackbox" style="display:none">
+            <div class="fbtitle"><span class="text">游戏反馈<i id="game_title">像素骑士团</i></span><span class="close" onclick="hideFeedbackBox()"></span></div>
+            <div class="fbcontent">
+                <div class="fbitem">
+                    <label for="fbitemradio1"><input name="contentType" class="fbitemradio" id="fbitemradio1" checked type="radio" value="1"><span class="radiobehind">游戏无法正常运行（白屏、链接无效等）。</span></label>
+                </div>
+                <div class="fbitem">
+                    <label for="fbitemradio2"><input name="contentType" class="fbitemradio" id="fbitemradio2" type="radio" value="2"><span class="radiobehind">游戏已有新版本，请尽快更新。</span></label>
+                </div>
+                <div class="fbitemc" style="display: none" id="feedbackurl">
+                    <input class="fbinput" placeholder="输入新版本地址" name="pageUrl" />
+                </div>
+                <div class="fbitem">
+                    <label for="fbitemradio3"><input name="contentType" class="fbitemradio" id="fbitemradio3" type="radio" value="3"><span class="radiobehind">我有其他问题。</span></label>
+                </div>
+                <div class="fbitemc" style="display: none" id="feedbackintro">
+                    <textarea class="fbtextarea" placeholder="输入问题描述" name="intro"></textarea>
+                </div>
+            </div>
+            <div class="fbboxbtn">
+                <div class="fbbtnsubmit" id="fbbtnsubmit" onclick="saveFeedback()">确定</div>
+                <div class="fbcancel" onclick="hideFeedbackBox()">取消</div>
+            </div>
+        </div>
+
+        <div id="rightNav" style="display:none">
+            <a id="weixinqr" class="ddif weixinqr simpletooltip" href="javascript:void(0)">
+                <div class="weixinqrshow"><img src="../../img/wxqrshow.png"></div>
+            </a>
+            <a id="book" class="ddif book simpletooltip" href="javascript:void(0)"></a>
+            <a id="gotop" class="ddif gotop hide" href="javascript:void(0)" title="回到顶部"></a>
+        </div>
+        <script>
+
+        </script>
+    </div>
+
+        <div id="footer" >
+            <div class="container rowwidth mauto"><p><a href="aboutus">关于我们&nbsp; </a><em> | </em><a href="contact">联系我们</a>&nbsp;<em> | </em><a href="copyright">版权声明</a><em> | </em><a href="https://tongji.baidu.com/main/homepage/10111822/homepage/index" target="_blank" rel="noopener">统计数据 </a><em> | </em><a href="https://jq.qq.com/?_wv=1027&amp;k=5HApbSa" target="_blank" rel="noopener">灵动游戏QQ群：952760443（综合群）</a></p>
+<p><a href="http://sq.ccm.gov.cn/ccnt/sczr/service/business/emark/toDetail/69e441b3f58248a68c8091797b437684" target="_blank" rel="noopener">网络文化经营许可证：苏网文〔2019〕0122-003号<em> | </em></a><a href="https://www.miit.gov.cn/" target="_blank" rel="noopener">增值电信业务经营许可证: 苏B2-20190220<em> | </em></a><a href="https://www.miit.gov.cn/" target="_blank" rel="noopener">苏ICP备10063826号<em>&nbsp;| </em></a><a href="http://www.beian.gov.cn" target="_blank" rel="noopener">公安机关备案号:32041102000019</a></p>
+<p><span style="color: #c9b270;">健康游戏忠告：抵制不良游戏&nbsp; 拒绝盗版游戏&nbsp; 注意自我保护&nbsp; 谨防受骗上当&nbsp; 适度游戏益脑&nbsp; 沉迷游戏伤身&nbsp; 合理安排时间&nbsp; 享受健康生活</span></p>
+<p>Copyright &copy; 2007-2018 常州龙核网络科技有限公司 版权所有，本站如有作品侵犯您的权益请即时联系我们进行下架处理。</p>
+<ul class="legal-ico">
+<li><a class="legal-1" title="互联网文化经营单位" href="http://sq.ccm.gov.cn/ccnt/sczr/service/business/emark/toDetail/69e441b3f58248a68c8091797b437684" target="_blank" rel="noopener"><span style="color: #999;"> 互联网文化经营单位</span></a></li>
+<li class="last"><a class="legal-2" title="苏公网安备标识" href="http://www.beian.gov.cn/portal/registerSystemInfo" target="_blank" rel="noopener"><span style="color: #999;"> 苏公网安备标识<br />32041102000625</span></a></li>
+</ul></div>
+        </div>
+    </body>
+
+</html>
+

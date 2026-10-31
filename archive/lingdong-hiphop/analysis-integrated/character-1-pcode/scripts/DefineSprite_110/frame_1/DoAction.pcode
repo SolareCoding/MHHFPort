@@ -1,0 +1,311 @@
+Jump loc04dd
+loc0005:DefineFunction2 "getPosNow", 0, 5, false, false, true, false, true, false, true, false, false {
+Push "e", 0.0, "f", 0.0, 2
+InitObject
+StoreRegister 2
+Pop
+Push "e", 0.0, "f", 0.0, 2
+InitObject
+StoreRegister 1
+Pop
+Push register2, 1, "g"
+CallFunction
+Pop
+Push register1, 1, "h"
+GetVariable
+Push "g"
+CallMethod
+Pop
+Push constant4, register2, constant5, register1, 2
+InitObject
+Return
+}
+Push constant6
+GetVariable
+Push null
+Equals2
+Not
+If loc00b5
+Push constant6, constant7
+GetVariable
+Push constant6
+GetMember
+SetVariable
+loc00b5:Push constant8
+GetVariable
+Push null
+Equals2
+Not
+If loc00d5
+Push constant8, constant7
+GetVariable
+Push constant9
+GetMember
+SetVariable
+loc00d5:Push 0.0, constant10, 2, constant11
+CallFunction
+Pop
+Push constant10
+GetVariable
+Push constant12, 0.0, constant13
+NewObject
+SetMember
+Push constant10
+GetVariable
+Push constant14, constant7
+GetVariable
+Push constant15
+GetMember
+SetMember
+Push constant16, 0.0, constant17
+CallFunction
+DefineLocal
+Push constant18, 0.0
+DefineLocal
+loc013a:Push constant18
+GetVariable
+Push constant10
+GetVariable
+Push constant14
+GetMember
+Less2
+Not
+If loc0180
+Push constant16
+GetVariable
+Push 1, constant10
+GetVariable
+Push constant12
+GetMember
+Push constant19
+CallMethod
+Pop
+Push constant18, constant18
+GetVariable
+Increment
+SetVariable
+Jump loc013a
+loc0180:Push constant20
+DefineFunction "", 0 {
+Push 0.0, constant10
+GetVariable
+Push constant21
+CallMethod
+Pop
+Push 0.0, constant10
+GetVariable
+Push constant22
+CallMethod
+Pop
+}
+SetVariable
+Push constant10
+GetVariable
+Push constant21
+DefineFunction2 "", 0, 2, false, false, true, false, true, false, false, true, false {
+Push 0.0, register1, constant12
+GetMember
+Push constant23
+CallMethod
+Pop
+Push 0.0, constant17
+CallFunction
+Push 1, register1, constant12
+GetMember
+Push constant19
+CallMethod
+Pop
+}
+SetMember
+Push constant10
+GetVariable
+Push constant22
+DefineFunction2 "", 0, 14, false, false, true, false, true, false, false, true, false {
+Push 0.0, register1, constant24
+CallMethod
+Pop
+Push constant8
+GetVariable
+StoreRegister 10
+Pop
+Push register10, register1, constant14
+GetMember
+Divide
+StoreRegister 13
+Pop
+Push 0.0
+InitArray
+StoreRegister 3
+Pop
+Push register1, constant12
+GetMember
+Enumerate2
+loc026a:StoreRegister 0
+Push null
+Equals2
+If loc0333
+Push register0
+StoreRegister 2
+Pop
+Push register1, constant12
+GetMember
+Push register2
+GetMember
+Push constant4
+GetMember
+StoreRegister 5
+Pop
+Push register1, constant12
+GetMember
+Push register2
+GetMember
+Push constant5
+GetMember
+StoreRegister 8
+Pop
+Push "e", register5, "e"
+GetMember
+Push "f", register5, "f"
+GetMember
+Push 2
+InitObject
+StoreRegister 6
+Pop
+Push "e", register8, "e"
+GetMember
+Push "f", register8, "f"
+GetMember
+Push 2
+InitObject
+StoreRegister 9
+Pop
+Push register6, 1, register1, constant25
+CallMethod
+Pop
+Push register9, 1, register1, constant25
+CallMethod
+Pop
+Push register3, register2, constant4, register6, constant5, register9, 2
+InitObject
+SetMember
+Jump loc026a
+loc0333:Push register3, constant26
+GetMember
+Push 1
+Subtract
+StoreRegister 2
+Pop
+loc0349:Push register2, 0.0
+Greater
+Not
+If loc04d7
+Push register3, register2
+GetMember
+Push constant4
+GetMember
+StoreRegister 5
+Pop
+Push register3, register2
+GetMember
+Push constant5
+GetMember
+StoreRegister 8
+Pop
+Push register3, register2, 1
+Subtract
+GetMember
+Push constant5
+GetMember
+StoreRegister 4
+Pop
+Push register3, register2, 1
+Subtract
+GetMember
+Push constant4
+GetMember
+StoreRegister 7
+Pop
+Push register10, constant6
+GetVariable
+Push 2, register1, constant27
+CallMethod
+Pop
+Push register5, "f"
+GetMember
+Push register5, "e"
+GetMember
+Push 2, register1, constant28
+CallMethod
+Pop
+Push register8, "f"
+GetMember
+Push register8, "e"
+GetMember
+Push 2, register1, constant29
+CallMethod
+Pop
+Push register4, "f"
+GetMember
+Push register4, "e"
+GetMember
+Push 2, register1, constant29
+CallMethod
+Pop
+Push 0.0, register1, constant30
+CallMethod
+Pop
+Push register10, constant6
+GetVariable
+Push 2, register1, constant27
+CallMethod
+Pop
+Push register4, "f"
+GetMember
+Push register4, "e"
+GetMember
+Push 2, register1, constant28
+CallMethod
+Pop
+Push register7, "f"
+GetMember
+Push register7, "e"
+GetMember
+Push 2, register1, constant29
+CallMethod
+Pop
+Push register5, "f"
+GetMember
+Push register5, "e"
+GetMember
+Push 2, register1, constant29
+CallMethod
+Pop
+Push 0.0, register1, constant30
+CallMethod
+Pop
+Push register10, register13
+Subtract
+StoreRegister 10
+Pop
+Push register2
+Decrement
+StoreRegister 2
+Pop
+Jump loc0349
+}
+loc04d7:SetMember
+Jump loc0607
+loc04dd:Push true
+Push false
+Push false
+Push true
+loc04f1:If loc05dc
+ConstantPool "x", "y", "localToGlobal", "lineMC", "p1", "p2", "rgb", "_root", "alpha", "tm", "shadowMC", "createEmptyMovieClip", "shaQueue", "Array", "queueLen", "long", "p", "getPosNow", "i", "push", "onEnterFrameFunc", "pushPos", "render", "shift", "clear", "globalToLocal", "length", "beginFill", "moveTo", "lineTo", "endFill"
+loc05dc:If loc05ee
+ConstantPool "e", "f", "g", "h"
+loc05ee:If loc0602
+Push true
+Push false
+Jump loc04f1
+loc0602:Jump loc0005
+loc0607:

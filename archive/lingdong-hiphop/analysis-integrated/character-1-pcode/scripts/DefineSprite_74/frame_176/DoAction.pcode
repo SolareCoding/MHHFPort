@@ -1,0 +1,50 @@
+Jump loc0085
+loc0005:Push "e"
+GetVariable
+Push "f"
+GetMember
+Push 1
+Equals2
+PushDuplicate
+Not
+If loc003b
+Pop
+Push "e"
+GetVariable
+Push "g"
+GetMember
+Push 0.0
+Equals2
+loc003b:Not
+If loc0080
+Push "e"
+GetVariable
+Push "h", 1
+SetMember
+Push 0.0, "e"
+GetVariable
+Push constant4
+CallMethod
+Pop
+Push constant5
+GetVariable
+Push 1, constant6
+GetVariable
+Push constant7
+CallMethod
+Pop
+loc0080:Jump loc0107
+loc0085:Push true
+Push false
+Push false
+Push true
+loc0099:If loc00dc
+ConstantPool "_root", "gg", "atkpress", "dong", "keyBack", "bname", "_parent", "gotoAndPlay"
+loc00dc:If loc00ee
+ConstantPool "e", "f", "g", "h"
+loc00ee:If loc0102
+Push true
+Push false
+Jump loc0099
+loc0102:Jump loc0005
+loc0107:

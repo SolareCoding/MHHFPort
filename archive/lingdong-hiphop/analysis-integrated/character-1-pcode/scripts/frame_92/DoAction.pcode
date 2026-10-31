@@ -1,0 +1,10 @@
+Push 0.0, "talk"
+CallFunction
+Pop
+Push 0.0, "_root"
+GetVariable
+Push "w_wdd"
+GetMember
+Push "start"
+CallMethod
+Pop

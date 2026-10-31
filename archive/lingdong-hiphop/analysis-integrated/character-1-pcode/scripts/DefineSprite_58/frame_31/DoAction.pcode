@@ -1,0 +1,5 @@
+Push 0.0, "swordLv"
+CallFunction
+Pop
+GoToLabel "四级"
+Play

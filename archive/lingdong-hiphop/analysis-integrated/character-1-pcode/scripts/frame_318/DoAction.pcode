@@ -1,0 +1,60 @@
+Jump loc00c8
+loc0005:Push "e"
+GetVariable
+Push 0.0
+Equals2
+PushDuplicate
+Not
+If loc003c
+Pop
+Push "f", 0.0
+GetProperty
+Push "g"
+GetVariable
+Push "h"
+GetMember
+Less2
+loc003c:Not
+If loc0066
+Push "f", 0.0, "f", 0.0
+GetProperty
+Push 10
+Add2
+SetProperty
+loc0066:Push "e"
+GetVariable
+Push 1
+Equals2
+PushDuplicate
+Not
+If loc0099
+Pop
+Push "f", 0.0
+GetProperty
+Push "g"
+GetVariable
+Push constant4
+GetMember
+Greater
+loc0099:Not
+If loc00c3
+Push "f", 0.0, "f", 0.0
+GetProperty
+Push 10
+Subtract
+SetProperty
+loc00c3:Jump loc0121
+loc00c8:Push true
+Push false
+Push false
+Push true
+loc00dc:If loc00f6
+ConstantPool "f", "", "_root", "smx", "sx"
+loc00f6:If loc0108
+ConstantPool "e", "f", "g", "h"
+loc0108:If loc011c
+Push true
+Push false
+Jump loc00dc
+loc011c:Jump loc0005
+loc0121:

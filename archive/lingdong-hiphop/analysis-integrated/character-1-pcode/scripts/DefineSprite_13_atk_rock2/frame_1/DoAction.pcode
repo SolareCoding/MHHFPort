@@ -1,0 +1,57 @@
+Jump loc00bb
+loc0005:Push "e", 6, 51
+RandomNumber
+Push 50
+Add2
+SetProperty
+Push "e", 10, 100
+RandomNumber
+SetProperty
+Push "e", 8, "e", 9, 70
+RandomNumber
+Push 300
+Add2
+StoreRegister 0
+SetProperty
+Push register0
+SetProperty
+Push "f", 80
+RandomNumber
+Push 40
+Subtract
+SetVariable
+Push "e", 0.0, "g"
+GetVariable
+Push "h"
+GetMember
+Push constant4
+GetMember
+Push "f"
+GetVariable
+Add2
+SetProperty
+Push "e", 1, "g"
+GetVariable
+Push "h"
+GetMember
+Push constant5
+GetMember
+Push "f"
+GetVariable
+Add2
+SetProperty
+Jump loc0122
+loc00bb:Push true
+Push false
+Push false
+Push true
+loc00cf:If loc00f7
+ConstantPool "", "atkxy", "_parent", "atk_temp", "_x", "_y"
+loc00f7:If loc0109
+ConstantPool "e", "f", "g", "h"
+loc0109:If loc011d
+Push true
+Push false
+Jump loc00cf
+loc011d:Jump loc0005
+loc0122:

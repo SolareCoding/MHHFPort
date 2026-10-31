@@ -1,0 +1,38 @@
+onClipEvent(enterFrame){
+   if(_parent.hp > 0)
+   {
+      i++;
+      if(i > 25)
+      {
+         aa = random(2);
+         if(aa == 0)
+         {
+            _parent.gotoAndStop("防2");
+         }
+         else
+         {
+            _parent.gotoAndPlay("防1");
+         }
+      }
+   }
+   else if(_parent._alpha > 0)
+   {
+      _parent._alpha -= 2;
+   }
+   else
+   {
+      if(_root.hp >= _root.maxhp)
+      {
+         _root.s += 2500;
+         _root.ex += 75;
+      }
+      else
+      {
+         _root.s += 1000;
+         _root.ex += 50;
+      }
+      _root.diren--;
+      _root.bos--;
+      _parent.removeMovieClip();
+   }
+}

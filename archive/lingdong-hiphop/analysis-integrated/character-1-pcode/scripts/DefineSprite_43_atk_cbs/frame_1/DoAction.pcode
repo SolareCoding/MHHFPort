@@ -1,0 +1,71 @@
+Jump loc00f3
+loc0005:Push "e", 10, 100
+RandomNumber
+SetProperty
+Push "e", 6, 51
+RandomNumber
+Push 50
+Add2
+SetProperty
+Push "f", 80
+RandomNumber
+Push 40
+Subtract
+SetVariable
+Push "e", 8, "e", 9, 71
+RandomNumber
+Push 400
+Add2
+StoreRegister 0
+SetProperty
+Push register0
+SetProperty
+Push "e", 0.0, "g"
+GetVariable
+Push "h"
+GetMember
+Push constant4
+GetMember
+Push "f"
+GetVariable
+Add2
+SetProperty
+Push "e", 1, "g"
+GetVariable
+Push "h"
+GetMember
+Push constant5
+GetMember
+Push "f"
+GetVariable
+Add2
+SetProperty
+Push 0.0, constant6
+GetVariable
+Push constant7
+GetMember
+Push constant8
+CallMethod
+Pop
+Push 0.0, constant6
+GetVariable
+Push constant9
+GetMember
+Push constant8
+CallMethod
+Pop
+Jump loc0177
+loc00f3:Push true
+Push false
+Push false
+Push true
+loc0107:If loc014c
+ConstantPool "", "atkxy", "_parent", "atk_temp", "_x", "_y", "_root", "hit_rock", "start", "x_firex"
+loc014c:If loc015e
+ConstantPool "e", "f", "g", "h"
+loc015e:If loc0172
+Push true
+Push false
+Jump loc0107
+loc0172:Jump loc0005
+loc0177:

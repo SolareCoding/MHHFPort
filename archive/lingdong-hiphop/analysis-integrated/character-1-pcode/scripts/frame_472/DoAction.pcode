@@ -1,0 +1,28 @@
+Jump loc0032
+loc0005:Push "e"
+GetVariable
+Push true
+Equals2
+Not
+If loc001d
+Play
+Jump loc002d
+loc001d:Push "e", false
+SetVariable
+GoToLabel "站"
+Play
+loc002d:Jump loc0082
+loc0032:Push true
+Push false
+Push false
+Push true
+loc0046:If loc0057
+ConstantPool "freeze"
+loc0057:If loc0069
+ConstantPool "e", "f", "g", "h"
+loc0069:If loc007d
+Push true
+Push false
+Jump loc0046
+loc007d:Jump loc0005
+loc0082:

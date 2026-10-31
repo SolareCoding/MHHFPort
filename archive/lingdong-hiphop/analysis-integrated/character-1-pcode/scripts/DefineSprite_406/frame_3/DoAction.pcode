@@ -1,0 +1,12 @@
+Push 0.0, "_parent"
+GetVariable
+Push "talk2"
+CallMethod
+Pop
+Push 0.0, "_root"
+GetVariable
+Push "x_bq"
+GetMember
+Push "start"
+CallMethod
+Pop

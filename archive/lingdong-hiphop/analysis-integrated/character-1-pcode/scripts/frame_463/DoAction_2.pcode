@@ -1,0 +1,10 @@
+Push 0.0, "atkSS"
+CallFunction
+Pop
+Push 0.0, "_root"
+GetVariable
+Push "m_ad2"
+GetMember
+Push "start"
+CallMethod
+Pop

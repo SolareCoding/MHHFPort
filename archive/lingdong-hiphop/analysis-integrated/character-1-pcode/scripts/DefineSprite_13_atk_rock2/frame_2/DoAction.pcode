@@ -1,0 +1,43 @@
+Jump loc006c
+loc0005:Push "e"
+GetVariable
+Push "f"
+GetMember
+Push "g", "e"
+GetVariable
+Push "f"
+GetMember
+Push "g"
+GetMember
+Push 5
+Subtract
+SetMember
+Push 0.0, "e"
+GetVariable
+Push "h"
+GetMember
+Push constant4
+CallMethod
+Pop
+Push 0.0, "e"
+GetVariable
+Push constant5
+GetMember
+Push constant4
+CallMethod
+Pop
+Jump loc00da
+loc006c:Push true
+Push false
+Push false
+Push true
+loc0080:If loc00af
+ConstantPool "_root", "game", "_y", "hit_rock", "start", "x_firex"
+loc00af:If loc00c1
+ConstantPool "e", "f", "g", "h"
+loc00c1:If loc00d5
+Push true
+Push false
+Jump loc0080
+loc00d5:Jump loc0005
+loc00da:

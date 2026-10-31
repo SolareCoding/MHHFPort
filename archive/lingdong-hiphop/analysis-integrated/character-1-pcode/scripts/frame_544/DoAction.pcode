@@ -1,0 +1,5 @@
+Push "_root"
+GetVariable
+Push "without", 1
+SetMember
+GoToLabel "站"

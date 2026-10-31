@@ -1,0 +1,95 @@
+Jump loc00fc
+loc0005:Push "e"
+GetVariable
+Push "f"
+GetMember
+Push true
+Equals2
+Not
+If loc00e7
+Push "e"
+GetVariable
+Push "g"
+GetMember
+Push 0.0
+Equals2
+PushDuplicate
+Not
+If loc0057
+Pop
+Push "e"
+GetVariable
+Push "h"
+GetMember
+Push constant4
+GetVariable
+Push constant5
+GetMember
+Greater
+loc0057:Not
+If loc0084
+Push "e"
+GetVariable
+Push "h", "e"
+GetVariable
+Push "h"
+GetMember
+Push "e"
+GetVariable
+Push constant6
+GetMember
+Subtract
+SetMember
+Jump loc00e2
+loc0084:Push "e"
+GetVariable
+Push "g"
+GetMember
+Push 1
+Equals2
+PushDuplicate
+Not
+If loc00ba
+Pop
+Push "e"
+GetVariable
+Push "h"
+GetMember
+Push constant4
+GetVariable
+Push constant7
+GetMember
+Less2
+loc00ba:Not
+If loc00e2
+Push "e"
+GetVariable
+Push "h", "e"
+GetVariable
+Push "h"
+GetMember
+Push "e"
+GetVariable
+Push constant6
+GetMember
+Add2
+SetMember
+loc00e2:Jump loc00f7
+loc00e7:Push 0.0, constant8
+CallFunction
+Pop
+loc00f7:Jump loc0170
+loc00fc:Push true
+Push false
+Push false
+Push true
+loc0110:If loc0145
+ConstantPool "_parent", "fly", "ff", "_x", "_root", "sx", "long", "smx", "atkFly"
+loc0145:If loc0157
+ConstantPool "e", "f", "g", "h"
+loc0157:If loc016b
+Push true
+Push false
+Jump loc0110
+loc016b:Jump loc0005
+loc0170:

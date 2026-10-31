@@ -1,0 +1,9 @@
+Push "take"
+GetVariable
+Push false
+Equals2
+Not
+If loc001e
+GoToLabel "站"
+Play
+loc001e:Play

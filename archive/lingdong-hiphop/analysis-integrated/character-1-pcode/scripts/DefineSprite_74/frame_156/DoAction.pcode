@@ -1,0 +1,102 @@
+Jump loc0123
+loc0005:Push "e"
+GetVariable
+Push "f"
+GetMember
+Push 0.0
+Equals2
+PushDuplicate
+Not
+If loc003f
+Pop
+Push "e"
+GetVariable
+Push "g"
+GetMember
+Push 0.0
+Equals2
+loc003f:PushDuplicate
+Not
+If loc005c
+Pop
+Push "e"
+GetVariable
+Push "h"
+GetMember
+Push 1
+Equals2
+loc005c:PushDuplicate
+Not
+If loc007d
+Pop
+Push "e"
+GetVariable
+Push constant4
+GetMember
+Push 0.0
+Equals2
+loc007d:PushDuplicate
+Not
+If loc009a
+Pop
+Push "e"
+GetVariable
+Push constant5
+GetMember
+Push 1
+Equals2
+loc009a:PushDuplicate
+Not
+If loc00bb
+Pop
+Push "e"
+GetVariable
+Push constant6
+GetMember
+Push 0.0
+Equals2
+loc00bb:PushDuplicate
+Not
+If loc00dd
+Pop
+Push "e"
+GetVariable
+Push constant7
+GetMember
+Push "e"
+GetVariable
+Push constant8
+GetMember
+Less2
+Not
+loc00dd:Not
+If loc011e
+Push "e"
+GetVariable
+Push constant9, 1
+SetMember
+Push 0.0, "e"
+GetVariable
+Push constant10
+CallMethod
+Pop
+Push constant11, 1, constant12
+GetVariable
+Push constant13
+CallMethod
+Pop
+loc011e:Jump loc01bd
+loc0123:Push true
+Push false
+Push false
+Push true
+loc0137:If loc0192
+ConstantPool "_root", "ll", "rr", "uu", "dd", "gg", "atkpress", "mp", "b_lc", "dong", "keyBack", "龙出前", "_parent", "gotoAndPlay"
+loc0192:If loc01a4
+ConstantPool "e", "f", "g", "h"
+loc01a4:If loc01b8
+Push true
+Push false
+Jump loc0137
+loc01b8:Jump loc0005
+loc01bd:

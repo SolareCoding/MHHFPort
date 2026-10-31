@@ -1,0 +1,38 @@
+Jump loc0058
+loc0005:Push 0.0, "e"
+CallFunction
+Pop
+Push 0.0, "f"
+GetVariable
+Push "g"
+GetMember
+Push "h"
+CallMethod
+Pop
+Push "f"
+GetVariable
+Push constant4, "f"
+GetVariable
+Push constant4
+GetMember
+Push "f"
+GetVariable
+Push constant5
+GetMember
+Subtract
+SetMember
+Jump loc00c0
+loc0058:Push true
+Push false
+Push false
+Push true
+loc006c:If loc0095
+ConstantPool "talk", "_root", "w_wdd", "start", "mp", "b_cz"
+loc0095:If loc00a7
+ConstantPool "e", "f", "g", "h"
+loc00a7:If loc00bb
+Push true
+Push false
+Jump loc006c
+loc00bb:Jump loc0005
+loc00c0:

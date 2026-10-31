@@ -1,0 +1,51 @@
+Jump loc007e
+loc0005:Push "e"
+GetVariable
+Push "f"
+GetMember
+Push "g", "e"
+GetVariable
+Push "f"
+GetMember
+Push "g"
+GetMember
+Push 10
+Add2
+SetMember
+Push "e"
+GetVariable
+Push "f"
+GetMember
+Push "h", "e"
+GetVariable
+Push "f"
+GetMember
+Push "h"
+GetMember
+Push 10
+Add2
+SetMember
+Push constant4, 1, constant5
+GetVariable
+Push constant5
+GetMember
+Push constant6
+GetMember
+Push constant7
+CallMethod
+Pop
+Jump loc0106
+loc007e:Push true
+Push false
+Push false
+Push true
+loc0092:If loc00db
+ConstantPool "_root", "game", "_width", "_height", "发动", "_parent", "firedrong", "gotoAndPlay"
+loc00db:If loc00ed
+ConstantPool "e", "f", "g", "h"
+loc00ed:If loc0101
+Push true
+Push false
+Jump loc0092
+loc0101:Jump loc0005
+loc0106:
