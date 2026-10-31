@@ -6,7 +6,9 @@
 
 三个角色的 `characters-deobfuscated/{1,2,3}/scripts/frame_1/DoAction.as` 都有同样的根时间轴循环：暂停外每帧调用 `mc.onEnterFrameFunc()`，随后执行 `if (t < 15) t++; else { hitLeave = 0; t = 0; }`。
 
-角色1的 `frame_1/PlaceObject2_72_10/CLIPACTIONRECORD onClipEvent(enterFrame).as` 根据 `hitLeave` 选择攻击1/2/3；其他角色有对应逻辑。游戏是25fps。这个计数器周期性运行，不应将原版描述为“从每次攻击起准确保留600ms”。按源码从t=0推演，清零周期为16次更新；提高阈值至30后为31次更新，约从640ms变为1240ms。暂停与实际运行步进会影响墙钟时间；在周期内开始攻击仍可能遇到较短剩余时间。
+角色1的 `frame_1/PlaceObject2_72_10/CLIPACTIONRECORD onClipEvent(enterFrame).as` 根据 `hitLeave` 选择攻击1/2/3；其他角色有对应逻辑。命中侧证据为主文件 `export/scripts/DefineSprite_113_e_01/frame_2/PlaceObject2_23_8/CLIPACTIONRECORD onClipEvent(enterFrame).as`：敌人与 `man.h1/h2/h3` 碰撞时分别设置 `man.hitLeave=1/2/0`，同时执行 `man.t=0`。因此它是命中后下一段普通攻击的保留窗口，空挥不自动推进段数。
+
+游戏是25fps。计数器自身周期性运行，不应将原版描述为“从每次按攻击起准确保留600ms”。从命中清零后t=0推演，清零周期为16次更新；提高阈值至30后为31次更新，约从640ms变为1240ms。事件执行顺序可能造成一帧差异，暂停与实际运行步进影响墙钟时间。
 
 方向组合必杀技由各角色内部子时间轴的多个帧动作识别，例如角色1 `DefineSprite_74` 的方向顺序分支。这些窗口与同帧新按下要求均未修改，本版也未加入攻击输入缓存或自动连击。
 
