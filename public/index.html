@@ -20,7 +20,7 @@
           <div class="action-buttons"><button data-key="k" class="jump-button" disabled>跳跃<span>K</span></button><button data-key="j" class="attack-button" disabled>攻击<span>J</span></button></div>
         </div>
       </div>
-      <div class="toolbar"><button id="start">启动游戏</button><button data-key="i" class="pause-button" disabled>暂停</button><button id="restart" disabled>重新启动</button><button id="fullscreen" disabled>全屏</button><button id="sound" disabled>静音</button><span id="status" role="status">等待启动</span></div>
+      <div class="toolbar"><button id="start">启动游戏</button><button data-key="i" class="pause-button" disabled>暂停</button><button id="restart" disabled>重新启动</button><label class="combo-label">普通连击 <select id="combo-mode"><option value="relaxed" selected>宽松（试验）</option><option value="original">原版</option></select></label><button id="fullscreen" disabled>全屏</button><button id="sound" disabled>静音</button><span id="status" role="status">等待启动</span></div>
     </section>
     <section class="help"><p><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> 移动 <i></i><kbd>J</kbd> 攻击 <i></i><kbd>K</kbd> 跳跃 <i></i><kbd>I</kbd> 游戏暂停</p><p class="muted">手机建议横屏：左手摇杆移动，右手攻击 / 跳跃，可同时按住。菜单直接点击游戏画面。触控对应原版默认按键，游戏内改键后请恢复默认。</p><p id="input-status" class="muted" aria-live="off">触控：已松开</p></section>
     <details><summary>运行信息</summary><pre id="diagnostics">Ruffle 0.7.1 · 所有游戏资源由本机提供。</pre><ul id="resources"></ul></details>

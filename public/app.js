@@ -7,6 +7,7 @@ const fullscreen = document.getElementById('fullscreen');
 const sound = document.getElementById('sound');
 const status = document.getElementById('status');
 const diagnostics = document.getElementById('diagnostics');
+const comboMode = document.getElementById('combo-mode');
 let player;
 let muted = false;
 const controls = setupControls(() => player);
@@ -23,6 +24,8 @@ function showResources() {
 new PerformanceObserver(showResources).observe({ entryTypes: ['resource'] });
 
 async function boot() {
+  const selectedMode = comboMode.value;
+  comboMode.disabled = true;
   controls.enable(false);
   start.disabled = true;
   restart.disabled = true;
@@ -37,7 +40,8 @@ async function boot() {
       diagnostics.textContent = 'Ruffle 0.7.1\n' + JSON.stringify(player.ruffle().metadata, null, 2);
     });
     await player.ruffle().load({
-      url: new URL('./game/a5b.swf', location.href).href, base: new URL('./game/', location.href).href,
+      url: new URL(selectedMode === 'relaxed' ? './game/relaxed/a5b.swf' : './game/a5b.swf', location.href).href,
+      base: new URL(selectedMode === 'relaxed' ? './game/relaxed/' : './game/', location.href).href,
       autoplay: 'on', unmuteOverlay: 'visible', backgroundColor: '#ffffff',
       scale: 'showAll', forceScale: true, letterbox: 'on',
       allowScriptAccess: false, openUrlMode: 'deny', logLevel: 'warn',
@@ -45,7 +49,7 @@ async function boot() {
     });
     player.ruffle().volume = muted ? 0 : 1;
     controls.enable(true);
-    status.textContent = '已载入 · 点击画面开始操作';
+    status.textContent = selectedMode === 'relaxed' ? '普通连击宽松版 · 已载入' : '原版判定 · 已载入';
     fullscreen.disabled = sound.disabled = restart.disabled = false;
     start.hidden = true;
     player.focus();
@@ -58,10 +62,16 @@ async function boot() {
     restart.disabled = false;
     document.querySelector('details').open = true;
     console.error(error);
+  } finally {
+    comboMode.disabled = false;
   }
 }
 start.addEventListener('click', boot);
 restart.addEventListener('click', boot);
+comboMode.addEventListener('change', () => {
+  controls.clear();
+  if (player) status.textContent = '点击重新启动以应用判定（会丢失当前进度）';
+});
 fullscreen.addEventListener('click', async () => {
   controls.clear();
   const card = document.querySelector('.player-card');

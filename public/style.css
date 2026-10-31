@@ -31,6 +31,8 @@ footer { text-align:center; font-size:11px; color:#747b79; margin-top:24px; }
 @media(max-width:600px) { main { padding:16px 8px; } h1 { font-size:20px; } .badge { display:none; } }
 
 #game-console { width:100%; overscroll-behavior:none; touch-action:none; }
+.combo-label { display:flex; align-items:center; gap:4px; font-size:12px; color:#b8bcb5; }
+#combo-mode { color:#e7e4dc; background:#303536; border:1px solid #575c5b; border-radius:6px; padding:6px 2px; font:inherit; }
 #stage { touch-action: none; }
 #touch-controls { display:flex; justify-content:space-between; align-items:center; padding:0 16px; background:#1a1e20; touch-action:none; user-select:none; -webkit-user-select:none; -webkit-touch-callout:none; }
 #joystick-zone { position:relative; width:150px; height:148px; flex-shrink:0; touch-action:none; }

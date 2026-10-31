@@ -1,0 +1,36 @@
+{
+  "description": "Ordinary combo hitLeave periodic reset threshold only; special-move timelines unchanged",
+  "fps": 25,
+  "characters": [
+    {
+      "id": 1,
+      "source": "public/game/games/data/mhhf_w/1man.swf",
+      "original_sha256": "56d49c67d901b2f043426820c5fc67bf3c79d1cd44163ac968f0474148abb849",
+      "patched_sha256": "5d65a14c0f43e70db979c86db94afee6d211554ff112f890f35c5d3748232544",
+      "decompressed_offset": 196700,
+      "old_frames": 15,
+      "new_frames": 30,
+      "changed_uncompressed_bytes": 1
+    },
+    {
+      "id": 2,
+      "source": "public/game/games/data/mhhf_w/2man.swf",
+      "original_sha256": "a3df13e2bad65c487f4f3cc5a487f5ac816205eadb426a9d5d27753fe9a97195",
+      "patched_sha256": "9de2607e00011c018ab56a6ad70bedcaa0a0a2491b547745eeec07d92045d1fe",
+      "decompressed_offset": 196691,
+      "old_frames": 15,
+      "new_frames": 30,
+      "changed_uncompressed_bytes": 1
+    },
+    {
+      "id": 3,
+      "source": "public/game/games/data/mhhf_w/3man.swf",
+      "original_sha256": "c9af858f769ac8cbdc5894581f900634a208c12edc30d309646d923245f5e8f6",
+      "patched_sha256": "f683c6575e62795c1379570821723d6890fc8de0f9efcb2d7377b42e6ae485c0",
+      "decompressed_offset": 196696,
+      "old_frames": 15,
+      "new_frames": 30,
+      "changed_uncompressed_bytes": 1
+    }
+  ]
+}

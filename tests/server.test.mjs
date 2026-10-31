@@ -48,6 +48,15 @@ test('standalone repository serves preserved SWFs and Ruffle over HTTP', async t
         assert.equal((await fetch(base + url)).status, 404, url);
       }
     });
+    await t.test('relaxed character URLs serve patched bytes', async () => {
+      const patch = JSON.parse(await readFile(new URL('../public/game/relaxed/patch-manifest.json', import.meta.url), 'utf8'));
+      for (const character of patch.characters) {
+        const response = await fetch(`${base}/game/relaxed/games/data/mhhf_w/${character.id}man.swf`);
+        assert.equal(response.status, 200);
+        const bytes = Buffer.from(await response.arrayBuffer());
+        assert.equal(createHash('sha256').update(bytes).digest('hex'), character.patched_sha256);
+      }
+    });
   } finally {
     if (child.exitCode === null) { child.kill(); await once(child, 'exit'); }
   }
