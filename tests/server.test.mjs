@@ -1,0 +1,46 @@
+import { test } from 'node:test';
+import assert from 'node:assert/strict';
+import { spawn } from 'node:child_process';
+import { once } from 'node:events';
+import { readFile } from 'node:fs/promises';
+import { createHash } from 'node:crypto';
+
+const cwd = new URL('../', import.meta.url);
+const port = Number(process.env.TEST_PORT || 18765);
+
+test('standalone repository serves preserved SWFs and Ruffle over HTTP', async t => {
+  const child = spawn(process.execPath, ['server.mjs'], { cwd, env: { ...process.env, PORT: String(port) }, windowsHide: true });
+  let stderr = '';
+  child.stderr.on('data', chunk => { stderr += chunk; });
+  try {
+    await Promise.race([
+      once(child.stdout, 'data'),
+      once(child, 'exit').then(([code]) => { throw new Error(`Server exited ${code}: ${stderr}`); }),
+      new Promise((_, reject) => { const timer = setTimeout(() => reject(new Error('Server startup timeout')), 5000); timer.unref(); })
+    ]);
+    const base = `http://127.0.0.1:${port}`;
+    await t.test('page loads', async () => {
+      const response = await fetch(base);
+      assert.equal(response.status, 200);
+      assert.match(await response.text(), /灵动嘻哈外传/);
+    });
+    const manifest = JSON.parse(await readFile(new URL('../assets-manifest.json', import.meta.url), 'utf8'));
+    for (const asset of manifest.files) {
+      await t.test(asset.url, async () => {
+        const response = await fetch(base + asset.url);
+        assert.equal(response.status, 200);
+        assert.match(response.headers.get('content-type'), new RegExp(asset.mime.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')));
+        const bytes = Buffer.from(await response.arrayBuffer());
+        assert.equal(bytes.length, asset.bytes);
+        assert.equal(createHash('sha256').update(bytes).digest('hex'), asset.sha256);
+      });
+    }
+    await t.test('private project files and unknown resources are not served', async () => {
+      for (const url of ['/package.json', '/server.mjs', '/.git/config', '/missing.swf']) {
+        assert.equal((await fetch(base + url)).status, 404, url);
+      }
+    });
+  } finally {
+    if (child.exitCode === null) { child.kill(); await once(child, 'exit'); }
+  }
+});
